@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
-import { glossaryTerms, tools, posts } from "@/lib/data";
+import { glossaryTerms, tools } from "@/lib/data";
 import { Badge } from "@/components/ui/Badge";
 import { FadeIn, StaggerContainer } from "@/components/ui/Motion";
 import { Search, BookOpen, Cpu, Wrench, Filter, ChevronUp, ExternalLink, AlertCircle, Lightbulb, Link2 } from "lucide-react";

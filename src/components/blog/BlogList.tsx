@@ -4,12 +4,11 @@ import { useState, useMemo, useEffect } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { posts } from "@/lib/data";
 import { formatDateArabic } from "@/lib/formatters";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, SlidersHorizontal } from "lucide-react";
+import { Search, ArrowRight } from "lucide-react";
 
 const categories = ["الكل", "ذكاء اصطناعي", "إنتاجية", "أخبار"];
 

@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import { NewsletterSignup } from "@/components/ui/NewsletterSignup";
 
 export const Footer = () => {
     return (

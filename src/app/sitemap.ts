@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: route === '' ? 1 : 0.8,
     }));
 
-    const blogRoutes = posts.map((post) => ({
+    const postsEntries = posts.map((post: { slug: string; date: string }) => ({
         url: `${baseUrl}/blog/${post.slug}`,
         lastModified: new Date(post.date),
         changeFrequency: 'monthly' as const,
@@ -38,19 +38,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
     }));
 
-    const systemRoutes = (typeof systems !== 'undefined' ? (systems as any[]) : []).map((system) => ({
+    const systemRoutes = (typeof systems !== 'undefined' ? (systems as { slug: string }[]) : []).map((system) => ({
         url: `${baseUrl}/systems/${system.slug}`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
         priority: 0.8,
     }));
 
-    const academyRoutes = (typeof courses !== 'undefined' ? (courses as any[]) : []).map((course) => ({
+    const academyRoutes = (typeof courses !== 'undefined' ? (courses as { slug: string }[]) : []).map((course) => ({
         url: `${baseUrl}/academy/${course.slug}`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
         priority: 0.7,
     }));
 
-    return [...staticRoutes, ...blogRoutes, ...toolRoutes, ...systemRoutes, ...academyRoutes];
+    return [...staticRoutes, ...postsEntries, ...toolRoutes, ...systemRoutes, ...academyRoutes];
 }

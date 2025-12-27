@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { Check, X, ArrowLeft } from "lucide-react";
+import { Check, X } from "lucide-react";
 import BlogList from "@/components/blog/BlogList";
 import { NewsletterSignup } from "@/components/ui/NewsletterSignup";
 import { SystemSnippet } from "@/components/ui/SystemSnippet";

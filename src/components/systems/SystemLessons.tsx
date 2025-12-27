@@ -1,7 +1,6 @@
 "use client";
 
 import { Play, FileDown, Clock, Video } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 import { motion } from "framer-motion";
 
 interface Lesson {

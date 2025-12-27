@@ -1,7 +1,6 @@
 "use client";
 
 import { ExternalLink, Copy, FileText, Layout, Table } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { motion } from "framer-motion";
 

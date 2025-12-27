@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { systems } from "@/lib/data";
 import { Button } from "@/components/ui/Button";
-import { Search, Zap, SlidersHorizontal, Clock, Target, BarChart3 } from "lucide-react";
+import { Search, Zap, Clock, Target } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import Image from "next/image";
 import { toast } from "sonner";
