@@ -54,9 +54,9 @@ export default function MediaKitPage() {
             {/* Stats Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-32">
                 {[
-                    { label: "مشترك في النشرة البريدية", value: "+5,000", icon: Mail, color: "text-blue-500" },
-                    { label: "زيارة شهرية للمنصة", value: "+25,000", icon: Users, color: "text-green-500" },
-                    { label: "معدل فتح النشرة البريدية", value: "42%", icon: BarChart3, color: "text-purple-500" }
+                    { label: "مشترك في النشرة البريدية", value: "+10,000", icon: Mail, color: "text-blue-500" },
+                    { label: "زيارة شهرية للمنصة", value: "+50,000", icon: Users, color: "text-green-500" },
+                    { label: "معدل فتح النشرة البريدية", value: "48%", icon: BarChart3, color: "text-purple-500" }
                 ].map((stat, i) => (
                     <div key={i} className="p-8 rounded-3xl bg-secondary/5 border border-border/50 text-center hover:bg-secondary/10 transition-colors">
                         <stat.icon className={`w-10 h-10 mx-auto mb-4 ${stat.color}`} />

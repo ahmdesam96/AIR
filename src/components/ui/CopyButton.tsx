@@ -7,8 +7,8 @@ interface CopyButtonProps {
     text: string;
     label?: string;
     className?: string;
-    variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
-    size?: "default" | "sm" | "lg" | "icon";
+    variant?: "primary" | "secondary" | "outline" | "ghost";
+    size?: "sm" | "md" | "lg" | "icon";
 }
 
 export function CopyButton({

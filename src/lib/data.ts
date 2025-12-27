@@ -78,6 +78,30 @@ export interface Tool {
     pricingType?: 'free' | 'paid' | 'freemium';
 }
 
+export interface Template {
+    name: string;
+    platform: 'Notion' | 'Trello' | 'Sheets' | 'Other';
+    url: string;
+    language: 'ar' | 'en' | 'both';
+}
+
+export interface Lesson {
+    title: string;
+    duration: string;
+    videoUrl?: string; // e.g., YouTube or Vimeo link
+    exampleFiles?: {
+        name: string;
+        url: string;
+    }[];
+}
+
+export interface Integration {
+    name: string;
+    type: 'Zapier' | 'n8n' | 'Webhook' | 'API';
+    flowUrl?: string;
+    description: string;
+}
+
 export interface System {
     id: string;
     slug: string;
@@ -97,6 +121,36 @@ export interface System {
     }[];
     toolsUsed: string[]; // Slugs of tools
     image: string;
+    // New fields for Phase 4
+    valueIdentity?: {
+        promise7Days: string;
+        roiIndicators: string[];
+        beforeAfter: {
+            before: string;
+            after: string;
+        }[];
+    };
+    templates?: Template[];
+    lessons?: Lesson[];
+    integrations?: Integration[];
+    filterMetadata?: {
+        goal: 'writing' | 'management' | 'analysis' | 'automation';
+        level: 'beginner' | 'intermediate' | 'advanced';
+        expectedTime: string;
+    };
+    socialProof?: {
+        testimonials: {
+            user: string;
+            role: string;
+            content: string;
+            avatar?: string;
+        }[];
+        caseStudies?: {
+            title: string;
+            summary: string;
+            link: string;
+        }[];
+    };
 }
 
 export interface PaymentDetails {
@@ -1094,7 +1148,28 @@ export const systems: System[] = [
             { label: "المنصات", value: "3 منصات" }
         ],
         toolsUsed: ["chatgpt", "claude", "canva"],
-        image: "/images/systems/content-repurposing.png"
+        image: "/images/systems/content-repurposing.png",
+        valueIdentity: {
+            promise7Days: "ستمتلك مكتبة محتوى متجددة تكفيك لشهر كامل خلال 7 أيام فقط.",
+            roiIndicators: ["توفير 20 ساعة عمل أسبوعياً", "زيادة التفاعل بنسبة 40%", "ثبات في النشر اليومي"],
+            beforeAfter: [
+                { before: "نشر عشوائي وغير منتظم", after: "نشر يومي على 3 منصات باحترافية" },
+                { before: "إجهاد في التفكير في أفكار جديدة", after: "استغلال ذكي لمحتوى موجود مسبقاً" }
+            ]
+        },
+        templates: [
+            { name: "جدول إعادة تدوير المحتوى", platform: "Notion", url: "https://notion.so/template-link", language: "ar" },
+            { name: "قالب منشورات لينكد إن", platform: "Notion", url: "https://notion.so/template-link-2", language: "both" }
+        ],
+        lessons: [
+            { title: "مقدمة في إعادة التدوير", duration: "3:45", videoUrl: "https://youtube.com/link1" },
+            { title: "التطبيق العملي مع ChatGPT", duration: "5:20", videoUrl: "https://youtube.com/link2" }
+        ],
+        filterMetadata: {
+            goal: "automation",
+            level: "beginner",
+            expectedTime: "30 دقيقة"
+        }
     },
     {
         id: "2",
@@ -1127,7 +1202,28 @@ export const systems: System[] = [
             { label: "الضغط الذهني", value: "-80%" }
         ],
         toolsUsed: ["perplexity", "notion"],
-        image: "/images/systems/10-hour.png"
+        image: "/images/systems/10-hour.png",
+        valueIdentity: {
+            promise7Days: "ستستعيد أول 10 ساعات من وقتك الضائع قبل نهاية الأسبوع الأول.",
+            roiIndicators: ["توفير 10 ساعات/أسبوع", "صفر فوضى في المواعيد", "أرشفة آلية لكل الاجتماعات"],
+            beforeAfter: [
+                { before: "نسيان تفاصيل الاجتماعات المهمة", after: "ملخصات آلية ومهام محددة لكل اجتماع" },
+                { before: "تشتت بين 10 تطبيقات مختلفة", after: "مركز إدارة موحد في Notion" }
+            ]
+        },
+        templates: [
+            { name: "نظام العقل الثاني", platform: "Notion", url: "https://notion.so/second-brain", language: "ar" },
+            { name: "متتبع الوقت الذكي", platform: "Sheets", url: "https://docs.google.com/sheets/link", language: "both" }
+        ],
+        lessons: [
+            { title: "كيف تضبط Perplexity للبحث", duration: "4:15" },
+            { title: "إعداد هيكل Notion الأساسي", duration: "6:30" }
+        ],
+        filterMetadata: {
+            goal: "management",
+            level: "intermediate",
+            expectedTime: "24 ساعة للإعداد الكامل"
+        }
     }
 ];
 

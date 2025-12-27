@@ -3,10 +3,14 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { ArrowLeft, Zap } from "lucide-react";
+import Image from "next/image";
 import { ArticleCTA } from "@/components/blog/ArticleCTA";
 import { systems } from "@/lib/data";
 import { Metadata } from "next";
 import { CopyButton } from "@/components/ui/CopyButton";
+import { SystemSuccessMetrics } from "@/components/systems/SystemSuccessMetrics";
+import { TemplateLibrary } from "@/components/systems/TemplateLibrary";
+import { SystemLessons } from "@/components/systems/SystemLessons";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
@@ -129,6 +133,11 @@ export default async function SystemPage({ params }: { params: Promise<{ slug: s
                         </p>
                     </div>
                 </div>
+
+                {/* Success Metrics (Phase 4) */}
+                {system.valueIdentity && (
+                    <SystemSuccessMetrics valueIdentity={system.valueIdentity} />
+                )}
             </section>
 
             {/* Implementation Steps */}
@@ -155,8 +164,46 @@ export default async function SystemPage({ params }: { params: Promise<{ slug: s
                             </div>
                         ))}
                     </div>
+
+                    {/* Templates & Lessons (Phase 4) */}
+                    {system.templates && (
+                        <TemplateLibrary templates={system.templates} />
+                    )}
+                    {system.lessons && (
+                        <SystemLessons lessons={system.lessons} />
+                    )}
                 </div>
             </section>
+
+            {/* Social Proof (Phase 4) */}
+            {system.socialProof && (
+                <section className="py-20 bg-background">
+                    <div className="container mx-auto px-4 max-w-5xl">
+                        <h2 className="text-3xl font-bold mb-12 text-center">نتائج المشتركين وشهاداتهم</h2>
+                        <div className="grid md:grid-cols-2 gap-8">
+                            {system.socialProof.testimonials.map((t, i) => (
+                                <div key={i} className="p-8 rounded-[2.5rem] bg-card border border-border relative overflow-hidden group">
+                                    <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full -mr-4 -mt-4" />
+                                    <p className="text-lg text-muted-foreground mb-8 relative z-10">&quot;{t.content}&quot;</p>
+                                    <div className="flex items-center gap-4 relative z-10">
+                                        <div className="w-12 h-12 rounded-full bg-secondary/20 border border-border overflow-hidden">
+                                            {t.avatar ? (
+                                                <Image src={t.avatar} alt={t.user} width={48} height={48} className="object-cover" />
+                                            ) : (
+                                                <div className="w-full h-full flex items-center justify-center text-xl">👤</div>
+                                            )}
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">{t.user}</div>
+                                            <div className="text-sm text-muted-foreground">{t.role}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
 
             {/* CTA Section */}
             <div className="container mx-auto px-4 max-w-4xl py-20">
