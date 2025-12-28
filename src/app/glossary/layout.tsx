@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 // Schema.org JSON-LD for glossary
 function generateSchemaJsonLd() {
-    const definedTerms = glossaryTerms.map((term, _index) => ({
+    const definedTerms = glossaryTerms.map((term) => ({
         "@type": "DefinedTerm",
         "@id": `https://zakaa-blog.vercel.app/glossary#${term.term.replace(/\s+/g, "-").toLowerCase()}`,
         "name": term.arabicTerm,

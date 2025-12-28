@@ -2,7 +2,6 @@ import { posts } from "@/lib/data";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Badge } from "@/components/ui/Badge";
 import { CardContent, CardFooter, CardHeader } from "@/components/ui/Card";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { Button } from "@/components/ui/Button";

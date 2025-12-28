@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { ArrowLeft, Zap } from "lucide-react";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
 import { ArticleCTA } from "@/components/blog/ArticleCTA";
 import { systems } from "@/lib/data";
 import { Metadata } from "next";
@@ -11,6 +11,9 @@ import { CopyButton } from "@/components/ui/CopyButton";
 import { SystemSuccessMetrics } from "@/components/systems/SystemSuccessMetrics";
 import { TemplateLibrary } from "@/components/systems/TemplateLibrary";
 import { SystemLessons } from "@/components/systems/SystemLessons";
+import { VisualComparison } from "@/components/systems/VisualComparison";
+import { TrustBadge } from "@/components/ui/TrustBadge";
+import { MidPageCTA } from "@/components/ui/MidPageCTA";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
@@ -95,6 +98,7 @@ export default async function SystemPage({ params }: { params: Promise<{ slug: s
                             <Zap className="w-3 h-3 fill-current" />
                             نظام جاهز
                         </Badge>
+                        <TrustBadge />
                         <Badge variant="secondary" className="bg-background/50">{system.toolsUsed.length} أدوات</Badge>
                     </div>
 
@@ -116,27 +120,37 @@ export default async function SystemPage({ params }: { params: Promise<{ slug: s
                 </div>
             </header>
 
-            {/* Problem / Result Split */}
+            {/* Problem / Result Split (Using VisualComparison) */}
             <section className="py-20 container mx-auto px-4 max-w-5xl">
-                <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-                    <div className="p-8 rounded-3xl bg-red-500/5 border border-red-500/10">
-                        <h3 className="text-2xl font-bold text-red-600 mb-4">المشكلة</h3>
-                        <p className="text-muted-foreground leading-relaxed text-lg">
-                            {system.problem}
-                        </p>
-                    </div>
-                    <div className="p-8 rounded-3xl bg-green-500/5 border border-green-500/10 shadow-lg relative overflow-hidden">
-                        <div className="absolute top-0 left-0 w-20 h-20 bg-green-500/10 rounded-br-full -ml-4 -mt-4" />
-                        <h3 className="text-2xl font-bold text-green-600 mb-4">النتيجة</h3>
-                        <p className="text-foreground leading-relaxed text-lg mb-4">
-                            {system.result}
-                        </p>
-                    </div>
+                <div className="mb-12 text-center">
+                    <h2 className="text-3xl font-bold mb-4">لماذا تحتاج هذا النظام؟</h2>
+                    <p className="text-muted-foreground">الفرق بين الطريقة التقليدية والنظام المؤتمت</p>
                 </div>
+
+                <VisualComparison
+                    before={{
+                        title: "الطريقة التقليدية (المشكلة)",
+                        description: system.problem,
+                        stats: [
+                            { label: "الجهد", value: "يدوي ومرهق" },
+                            { label: "المخاطرة", value: "خطأ بشري وارد" }
+                        ]
+                    }}
+                    after={{
+                        title: "مع نظام ذكاء (النتيجة)",
+                        description: system.result,
+                        stats: [
+                            { label: "الجهد", value: "آلي بالكامل" },
+                            { label: "الدقة", value: "100%" }
+                        ]
+                    }}
+                />
 
                 {/* Success Metrics (Phase 4) */}
                 {system.valueIdentity && (
-                    <SystemSuccessMetrics valueIdentity={system.valueIdentity} />
+                    <div className="mt-16">
+                        <SystemSuccessMetrics valueIdentity={system.valueIdentity} />
+                    </div>
                 )}
             </section>
 
@@ -175,6 +189,9 @@ export default async function SystemPage({ params }: { params: Promise<{ slug: s
                 </div>
             </section>
 
+            {/* Mid-Page Sticky CTA */}
+            <MidPageCTA />
+
             {/* Social Proof (Phase 4) */}
             {system.socialProof && (
                 <section className="py-20 bg-background">
@@ -188,7 +205,16 @@ export default async function SystemPage({ params }: { params: Promise<{ slug: s
                                     <div className="flex items-center gap-4 relative z-10">
                                         <div className="w-12 h-12 rounded-full bg-secondary/20 border border-border overflow-hidden">
                                             {t.avatar ? (
-                                                <Image src={t.avatar} alt={t.user} width={48} height={48} className="object-cover" />
+                                                <OptimizedImage
+                                                    config={{
+                                                        src: t.avatar,
+                                                        alt: t.user,
+                                                        category: "testimonials",
+                                                        width: 48,
+                                                        height: 48
+                                                    }}
+                                                    className="object-cover w-full h-full"
+                                                />
                                             ) : (
                                                 <div className="w-full h-full flex items-center justify-center text-xl">👤</div>
                                             )}

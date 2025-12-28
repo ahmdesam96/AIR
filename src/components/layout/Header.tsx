@@ -9,15 +9,14 @@ export const Header = () => {
     return (
         <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container mx-auto flex h-16 items-center justify-between px-4">
-                <Link href="/" className="flex items-center gap-2 group">
-                    <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                        {/* System Icon (Grid/Layers concept) */}
-                        <div className="grid grid-cols-2 gap-1 w-5 h-5 opacity-80 group-hover:opacity-100 transition-opacity">
-                            <span className="bg-primary rounded-sm"></span>
-                            <span className="bg-primary/50 rounded-sm"></span>
-                            <span className="bg-primary/50 rounded-sm"></span>
-                            <span className="bg-primary rounded-sm"></span>
-                        </div>
+                <Link href="/" className="flex items-center gap-3 group">
+                    <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-110">
+                        {/* Logo Image */}
+                        <img
+                            src="/images/logo.png"
+                            alt="Zakaa Logo"
+                            className="w-full h-full object-contain"
+                        />
                     </div>
                     <span className="text-2xl font-extrabold tracking-tight text-foreground group-hover:text-primary transition-colors">
                         ذكاء<span className="text-primary">.</span>

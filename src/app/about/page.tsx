@@ -3,10 +3,21 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "من نحن | ذكاء عملي",
     description: "تعرف على الفريق وراء منصة ذكاء عملي، ورسالتنا في تمكين رواد الأعمال العرب باستخدام أدوات الذكاء الاصطناعي.",
+    openGraph: {
+        images: [
+            {
+                url: IMAGES.og.default.src,
+                width: IMAGES.og.default.width || 1200,
+                height: IMAGES.og.default.height || 630,
+                alt: IMAGES.og.default.alt,
+            },
+        ],
+    },
 };
 
 import { Button } from "@/components/ui/Button";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
+import { IMAGES } from "@/lib/image-data";
 import { authors } from "@/lib/data";
 
 export default function AboutPage() {
@@ -76,10 +87,14 @@ export default function AboutPage() {
                             <div key={author.name} className="flex flex-col items-center gap-3">
                                 <div className="p-1 rounded-full border-2 border-primary/20">
                                     <div className="relative w-20 h-20 rounded-full overflow-hidden bg-muted">
-                                        <Image
-                                            src={author.avatar}
-                                            alt={author.name}
-                                            fill
+                                        <OptimizedImage
+                                            config={{
+                                                src: author.avatar,
+                                                alt: author.name,
+                                                category: "testimonials", // Assuming avatars are stored/categorized similar to testimonials or adding a new 'authors' category if needed. For now sticking to closest fit.
+                                                width: 80,
+                                                height: 80
+                                            }}
                                             className="object-cover"
                                         />
                                     </div>

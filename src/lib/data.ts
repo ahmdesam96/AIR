@@ -168,7 +168,7 @@ export const paymentDetails: PaymentDetails = {
 export const authors: Record<string, Author> = {
     ahmed: {
         name: "أحمد عصام",
-        avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Ahmed",
+        avatar: "/images/ahmed-esam.png",
         role: "مؤسس ذكاء.",
         bio: "رائد أعمال تقني مهتم بتبسيط الذكاء الاصطناعي للشركات الناشئة.",
         twitter: "ahmed_esam",

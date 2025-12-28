@@ -6,46 +6,48 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { Toaster } from "@/components/ui/Toaster";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { ImageDeduplicationProvider } from "@/components/providers/ImageDeduplicationProvider";
+import { CommandPalette } from "@/components/ui/CommandPalette";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://arabic-ai-blog.vercel.app'),
+  metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    template: '%s | ذكاء عملي',
-    default: 'ذكاء عملي | التطبيق العملي للذكاء الاصطناعي',
+    template: `%s | ${SITE_CONFIG.name}`,
+    default: `${SITE_CONFIG.name} | التطبيق العملي للذكاء الاصطناعي`,
   },
-  description: 'منصة عربية تنفيذية تعلمك كيفية تحويل الذكاء الاصطناعي من مجرد أداة للتجربة إلى نظام عملي يوفر لك الإنتاجية، الوقت، والمال.',
-  applicationName: 'Zakaa Amaly',
-  authors: [{ name: 'Ahmed Esam' }],
+  description: SITE_CONFIG.description,
+  applicationName: SITE_CONFIG.nameEn,
+  authors: [{ name: SITE_CONFIG.author }],
   generator: 'Next.js',
   keywords: ['ذكاء اصطناعي', 'ذكاء عملي', 'ChatGPT', 'إنتاجية', 'أنظمة عمل', 'Business Automation'],
-  creator: 'Ahmed Esam',
-  publisher: 'Zakaa Amaly',
+  creator: SITE_CONFIG.author,
+  publisher: SITE_CONFIG.nameEn,
   openGraph: {
     type: "website",
     locale: "ar_SA",
-    url: "https://arabic-ai-blog.vercel.app",
-    title: "ذكاء عملي | لن تتعلم الذكاء الاصطناعي هنا.. بل ستستخدمه",
+    url: SITE_CONFIG.url,
+    title: `${SITE_CONFIG.name} | لن تتعلم الذكاء الاصطناعي هنا.. بل ستستخدمه`,
     description: "أنظمة مجربة تجعل الذكاء الاصطناعي يعمل نيابة عنك بدلاً من التفكير فيه.",
-    siteName: "ذكاء عملي",
+    siteName: SITE_CONFIG.name,
     images: [{
       url: '/og-image.png',
       width: 1200,
       height: 630,
-      alt: 'ذكاء عملي - استخدم الذكاء الاصطناعي واطلع نتيجة',
+      alt: `${SITE_CONFIG.name} - استخدم الذكاء الاصطناعي واطلع نتيجة`,
     }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ذكاء عملي | التطبيق العملي للذكاء الاصطناعي",
+    title: `${SITE_CONFIG.name} | التطبيق العملي للذكاء الاصطناعي`,
     description: "منصة عربية تنفيذية للذكاء الاصطناعي.",
-    creator: '@zakaa_ai',
+    creator: SITE_CONFIG.twitterHandle,
   },
   robots: {
     index: true,
     follow: true,
   },
   alternates: {
-    canonical: 'https://arabic-ai-blog.vercel.app',
+    canonical: SITE_CONFIG.url,
   },
 };
 
@@ -98,7 +100,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`antialiased font-sans bg-background text-foreground min-h-screen flex flex-col`}
+        className={`antialiased font-['IBM_Plex_Sans_Arabic'] font-medium bg-background text-foreground min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
         <ThemeProvider
@@ -114,6 +116,7 @@ export default function RootLayout({
               {children}
             </main>
             <Footer />
+            <CommandPalette />
           </ImageDeduplicationProvider>
           <Toaster />
         </ThemeProvider>

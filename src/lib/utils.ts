@@ -1,4 +1,7 @@
-// Utility function to combine classNames
-export function cn(...classes: (string | undefined | false)[]): string {
-  return classes.filter(Boolean).join(' ');
+import { twMerge } from 'tailwind-merge';
+import { clsx, type ClassValue } from 'clsx';
+
+// Utility function to intelligently merge Tailwind classes
+export function cn(...inputs: ClassValue[]): string {
+  return twMerge(clsx(inputs));
 }

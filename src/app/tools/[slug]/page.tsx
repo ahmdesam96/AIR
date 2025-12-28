@@ -1,6 +1,6 @@
 import { tools } from "@/lib/data";
 import { notFound } from "next/navigation";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
@@ -69,11 +69,14 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ slu
                     <div className="relative h-64 md:h-80 w-full bg-gradient-to-b from-primary/5 to-transparent">
                         <div className="absolute inset-0 flex items-center justify-center">
                             <div className="relative w-40 h-40 md:w-56 md:h-56 bg-background rounded-2xl shadow-2xl p-4 flex items-center justify-center">
-                                <Image
-                                    src={tool.image}
-                                    alt={tool.name}
-                                    width={200}
-                                    height={200}
+                                <OptimizedImage
+                                    config={{
+                                        src: tool.image,
+                                        alt: tool.name,
+                                        category: "tools", // Assuming 'tools' category exists or mapping to generic if not
+                                        width: 224, // 56 * 4
+                                        height: 224
+                                    }}
                                     className="object-contain w-full h-full"
                                 />
                             </div>

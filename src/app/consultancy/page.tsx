@@ -2,10 +2,22 @@ import { Metadata } from "next";
 import { servicePackages } from "@/lib/data";
 import { Button } from "@/components/ui/Button";
 import { Check, Mail, Calendar, MessageSquare, Zap } from "lucide-react";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
+import { IMAGES } from "@/lib/image-data";
 
 export const metadata: Metadata = {
     title: "خدمات الاستشارات والتحول الرقمي | ذكاء.",
     description: "نساعد الشركات في تبني أدوات الذكاء الاصطناعي وأتمتة العمليات لرفع الكفاءة وتقليل التكاليف.",
+    openGraph: {
+        images: [
+            {
+                url: IMAGES.og.consultancy.src,
+                width: IMAGES.og.consultancy.width || 1200,
+                height: IMAGES.og.consultancy.height || 630,
+                alt: IMAGES.og.consultancy.alt,
+            },
+        ],
+    },
 };
 
 export default function ConsultancyPage() {
@@ -14,10 +26,18 @@ export default function ConsultancyPage() {
             {/* Value Prop */}
             <div className="max-w-4xl mx-auto text-center mb-32 space-y-8">
                 <span className="text-primary font-bold tracking-widest uppercase py-2 px-4 bg-primary/10 rounded-full text-xs">خدمات استشارية</span>
-                <h1 className="text-6xl md:text-8xl font-bold leading-tight tracking-tighter">
+                <h1 className="text-6xl md:text-8xl font-bold leading-tight tracking-tighter mb-4">
                     اجعل الـ AI <br />
                     <span className="text-gradient-gold">الموظف الأذكى في فريقك.</span>
                 </h1>
+
+                <div className="relative w-full aspect-[21/9] rounded-3xl overflow-hidden shadow-2xl mb-8">
+                    <OptimizedImage
+                        config={IMAGES.hero.consultancy}
+                        className="object-cover"
+                        priority={true}
+                    />
+                </div>
                 <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
                     الذكاء الاصطناعي ليس مجرد &quot;شات&quot;. هو نظام متكامل يمكنه أداء مهامك الروتينية، والرد على عملائك، وصناعة محتواك في ثوانٍ. نحن نساعدك على بنائه.
                 </p>

@@ -154,9 +154,14 @@ export default function SystemsPage() {
                                                 {levels.find(l => l.id === system.filterMetadata?.level)?.label}
                                             </Badge>
                                         )}
-                                        <Badge variant="secondary" className="backdrop-blur-md bg-white/10 border border-white/20 text-white font-bold rounded-full">
-                                            {system.toolsUsed.length} أدوات
-                                        </Badge>
+                                        <div className="flex flex-col gap-2 items-end">
+                                            <Badge variant="secondary" className="backdrop-blur-md bg-white/10 border border-white/20 text-white font-bold rounded-full">
+                                                {system.toolsUsed.length} أدوات
+                                            </Badge>
+                                            <div className="bg-green-500/90 backdrop-blur-md text-white px-2 py-0.5 rounded text-[10px] font-bold shadow-lg">
+                                                ✅ تم اختباره
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -182,21 +187,20 @@ export default function SystemsPage() {
                                     </div>
 
                                     <div className="flex flex-col sm:flex-row gap-4 mt-auto">
-                                        <Link href={`/systems/${system.slug}`} className="flex-1">
-                                            <Button className="w-full h-14 text-lg font-bold rounded-2xl">
-                                                عرض الخطوات والنتائج
-                                            </Button>
-                                        </Link>
                                         <Button
-                                            variant="outline"
-                                            className="h-14 px-8 font-bold border-2 rounded-2xl hover:bg-primary/5"
+                                            className="h-14 flex-1 text-lg font-bold rounded-2xl shadow-xl shadow-primary/20"
                                             onClick={() => {
                                                 navigator.clipboard.writeText(`${system.title}\n${system.description}`);
-                                                toast.success("تم نسخ ملخص النظام!");
+                                                toast.success("تم نسخ تفاصيل النظام! جاهز للصق.");
                                             }}
                                         >
-                                            نسخ
+                                            نسخ النظام
                                         </Button>
+                                        <Link href={`/systems/${system.slug}`} className="flex-1">
+                                            <Button variant="outline" className="w-full h-14 text-lg font-bold rounded-2xl border-2 hover:bg-primary/5">
+                                                عرض التفاصيل
+                                            </Button>
+                                        </Link>
                                     </div>
                                 </div>
                             </motion.div>
