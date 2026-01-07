@@ -9,11 +9,20 @@ export const Footer = () => {
             <div className="container mx-auto px-4 py-12 md:py-16">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div className="md:col-span-2 space-y-4">
-                        <Link href="/" className="text-3xl font-bold text-primary block">
-                            ذكاء<span className="text-foreground">.</span>
+                        <Link href="/" className="inline-block relative w-32 md:w-40 h-10 md:h-12">
+                            <img
+                                src="/images/brand/air-logo-full.png"
+                                alt="أثير | AIR"
+                                className="w-full h-full object-contain dark:hidden"
+                            />
+                            <img
+                                src="/images/brand/air-logo-dark.png"
+                                alt="أثير | AIR"
+                                className="w-full h-full object-contain hidden dark:block"
+                            />
                         </Link>
                         <p className="text-muted-foreground max-w-sm leading-relaxed mb-4">
-                            منصة عربية تنفيذية تعلمك كيفية تحويل الذكاء الاصطناعي من مجرد أداة للتجربة إلى نظام عملي يوفر لك الإنتاجية، الوقت، والمال.
+                            مستودع الذكاء العربي - منصة شاملة للأنظمة والأدوات والمعرفة التي تمكنك من تحويل الذكاء الاصطناعي إلى واقع ملموس في عملك وحياتك.
                         </p>
                     </div>
 
@@ -81,7 +90,7 @@ export const Footer = () => {
                         <span>•</span>
                         <Link href="/terms" className="hover:text-primary transition-colors">الشروط والأحكام</Link>
                     </div>
-                    <p>© {new Date().getFullYear()} ذكاء. جميع الحقوق محفوظة.</p>
+                    <p>© {new Date().getFullYear()} أثير | AIR. جميع الحقوق محفوظة.</p>
                 </div>
             </div>
         </footer>

@@ -67,14 +67,17 @@ export default function BlogList({ limit }: BlogListProps) {
                 </p>
 
                 {/* Search & Filter UI */}
-                <div className="max-w-2xl mx-auto rounded-full bg-secondary/5 border border-border p-2 pr-6 flex items-center shadow-lg transition-all focus-within:shadow-primary/10 focus-within:border-primary/20">
-                    <Search className="w-5 h-5 text-muted-foreground ml-4" />
+                <div className="max-w-2xl mx-auto rounded-full bg-secondary/5 border border-border p-2 pr-6 flex items-center shadow-lg transition-all focus-within:shadow-primary/10 focus-within:border-primary/20" role="search">
+                    <label htmlFor="blog-search-input" className="sr-only">البحث في المدونة</label>
+                    <Search className="w-5 h-5 text-muted-foreground ml-4" aria-hidden="true" />
                     <input
-                        type="text"
+                        id="blog-search-input"
+                        type="search"
                         placeholder="ابحث في المدونة..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         className="flex-1 bg-transparent border-none outline-none h-12 text-lg"
+                        aria-label="البحث في المدونة"
                     />
                     <div className="flex gap-2">
                         {categories.map((category) => (

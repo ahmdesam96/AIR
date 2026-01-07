@@ -9,13 +9,15 @@ import { NewsletterSignup } from "@/components/ui/NewsletterSignup";
 import { SystemSnippet } from "@/components/ui/SystemSnippet";
 import { BeforeAfter } from "@/components/sections/BeforeAfter";
 import { OptimizedImage } from "@/components/ui/OptimizedImage";
+import { FeatureCard } from "@/components/ui/FeatureCard";
+import { TestimonialCard } from "@/components/ui/TestimonialCard";
 
 export const metadata: Metadata = {
-  title: "ذكاء عملي | أدوات واقعية للمحترفين العرب",
-  description: "أنظمة جاهزة للنسخ واللصق، أدوات إنتاجية، وأمثلة واقعية لتوفير 10 ساعات أسبوعياً",
+  title: "أثير | AIR - Arab Intelligence Repository",
+  description: "مستودع الذكاء العربي - أنظمة جاهزة، أدوات إنتاجية، ومعرفة شاملة في مجال الذكاء الاصطناعي",
   openGraph: {
-    title: "ذكاء عملي",
-    description: "أنظمة جاهزة للنسخ واللصق، أدوات إنتاجية، وأمثلة واقعية",
+    title: "أثير | AIR",
+    description: "مستودع الذكاء العربي - منصة شاملة للأنظمة والأدوات في مجال الذكاء الاصطناعي",
     images: [
       {
         url: IMAGES.og.default.src,
@@ -40,29 +42,29 @@ export default function Home() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div className="relative z-10 max-w-4xl mx-auto space-y-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/5 border border-secondary/10 backdrop-blur-sm">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            <span className="text-sm font-medium text-muted-foreground">تحديث: النظام العملي للمحتوى جاهز للنسخ</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            <span className="text-sm font-medium text-primary">مستودع الذكاء العربي</span>
           </div>
 
           <h1 className="leading-tight">
-            اعمل بذكاء: أنظمة جاهزة <br />
-            <span className="text-gradient-gold">لتوفير 10 ساعات أسبوعياً.</span>
+            أثير | AIR <br />
+            <span className="text-gradient-tech">Arab Intelligence Repository</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            لن تتعلم الذكاء الاصطناعي هنا. بل ستستخدمه. <br />
-            أنظمة جاهزة، أدوات إنتاجيات، وأمثلة واقعية.
+            مستودع شامل للأنظمة، الأدوات، والمعرفة في مجال الذكاء الاصطناعي.<br />
+            كل ما تحتاجه لتطبيق الذكاء الاصطناعي في عملك.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Link href="/resources/10-hour-guide">
               <Button size="lg" className="w-full sm:w-auto text-lg px-12 h-16 font-bold shadow-2xl shadow-primary/20">
-                حمّل الدليل الآن
+                استكشف المستودع
               </Button>
             </Link>
             <p className="text-sm text-muted-foreground mt-2 sm:mt-0">
-              * ابدأ غداً بدون تنظير
+              * أنظمة جاهزة للتطبيق الفوري
             </p>
           </div>
 
@@ -78,58 +80,31 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 bg-gradient-to-b from-background to-card/30">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-background to-[var(--muted)]/30">
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="font-bold text-4xl mb-4">الميزات الرئيسية</h2>
-            <p className="text-xl text-muted-foreground">ما الذي يميزنا عن الآخرين</p>
+          <div className="text-center mb-12">
+            <h2 className="mb-4">ما الذي يميز أثير | AIR؟</h2>
+            <p className="text-xl text-[var(--muted-foreground)] max-w-2xl mx-auto">
+              مستودع متكامل يحوّل الذكاء الاصطناعي من مفهوم نظري إلى أداة عملية في يدك
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="group relative">
-              <div className="mb-6 aspect-video overflow-hidden rounded-2xl bg-muted">
-                <OptimizedImage
-                  config={IMAGES.features.executionReady}
-                  context="feature"
-                  className="group-hover:scale-110 transition-transform duration-300 w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="font-bold text-2xl mb-3">رؤى قابلة للتنفيذ</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                تحويل البيانات إلى استراتيجيات عملية يمكنك تطبيقها فوراً دون تأخير
-              </p>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="group relative">
-              <div className="mb-6 aspect-video overflow-hidden rounded-2xl bg-muted">
-                <OptimizedImage
-                  config={IMAGES.features.easyAutomation}
-                  context="feature"
-                  className="group-hover:scale-110 transition-transform duration-300 w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="font-bold text-2xl mb-3">أتمتة سهلة</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                تبسيط المهام المتكررة والمملة باستخدام أدوات ذكية وفعالة
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="group relative">
-              <div className="mb-6 aspect-video overflow-hidden rounded-2xl bg-muted">
-                <OptimizedImage
-                  config={IMAGES.features.smartTools}
-                  context="feature"
-                  className="group-hover:scale-110 transition-transform duration-300 w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="font-bold text-2xl mb-3">أدوات ذكية</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                مجموعة متكاملة من أدوات الذكاء الاصطناعي الموثوقة والمدعومة
-              </p>
-            </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            <FeatureCard
+              icon={<Zap className="w-6 h-6" />}
+              title="رؤى قابلة للتنفيذ"
+              description="تحويل البيانات إلى استراتيجيات عملية يمكنك تطبيقها فوراً دون تأخير أو تنظير."
+            />
+            <FeatureCard
+              icon={<Check className="w-6 h-6" />}
+              title="أتمتة سهلة"
+              description="أنظمة جاهزة للنسخ تبسّط المهام المتكررة وتوفر ساعات من العمل اليدوي."
+            />
+            <FeatureCard
+              icon={<Zap className="w-6 h-6" />}
+              title="أدوات موثوقة"
+              description="مجموعة مختارة بعناية من أفضل أدوات الذكاء الاصطناعي مع شروحات عملية."
+            />
           </div>
         </div>
       </section>
@@ -239,6 +214,67 @@ export default function Home() {
                 استكشف الأدوات →
               </Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section - Social Proof */}
+      <section className="container mx-auto px-4 py-24 max-w-6xl">
+        <div className="text-center mb-16">
+          <h2 className="font-bold mb-4">ماذا يقول مستخدمونا؟</h2>
+          <p className="text-xl text-muted-foreground">تجارب حقيقية من رواد أعمال وصناع محتوى</p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Testimonial 1 */}
+          <div className="p-8 rounded-3xl bg-card border border-border relative overflow-hidden group hover:border-primary/30 transition-colors">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-primary/5 rounded-bl-full -mr-4 -mt-4" />
+            <p className="text-lg text-muted-foreground mb-6 leading-relaxed relative z-10">
+              &quot;وفرت 12 ساعة أسبوعياً بعد تطبيق نظام إعادة استغلال المحتوى. الأنظمة واضحة وسهلة التنفيذ.&quot;
+            </p>
+            <div className="flex items-center gap-3 relative z-10">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-2xl">
+                👨‍💼
+              </div>
+              <div>
+                <div className="font-bold">محمد الراشد</div>
+                <div className="text-sm text-muted-foreground">صانع محتوى</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Testimonial 2 */}
+          <div className="p-8 rounded-3xl bg-card border border-border relative overflow-hidden group hover:border-primary/30 transition-colors">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-primary/5 rounded-bl-full -mr-4 -mt-4" />
+            <p className="text-lg text-muted-foreground mb-6 leading-relaxed relative z-10">
+              &quot;أخيراً محتوى عربي عملي عن الذكاء الاصطناعي! الأدوات المختارة مميزة والشروحات واضحة.&quot;
+            </p>
+            <div className="flex items-center gap-3 relative z-10">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-2xl">
+                👩‍💻
+              </div>
+              <div>
+                <div className="font-bold">سارة الأحمد</div>
+                <div className="text-sm text-muted-foreground">مديرة تسويق</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Testimonial 3 */}
+          <div className="p-8 rounded-3xl bg-card border border-border relative overflow-hidden group hover:border-primary/30 transition-colors">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-primary/5 rounded-bl-full -mr-4 -mt-4" />
+            <p className="text-lg text-muted-foreground mb-6 leading-relaxed relative z-10">
+              &quot;النشرة الأسبوعية رائعة! كل خميس أحصل على أدوات جديدة يمكنني تطبيقها فوراً.&quot;
+            </p>
+            <div className="flex items-center gap-3 relative z-10">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-2xl">
+                👨‍🎓
+              </div>
+              <div>
+                <div className="font-bold">خالد المنصور</div>
+                <div className="text-sm text-muted-foreground">رائد أعمال</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

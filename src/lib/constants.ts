@@ -1,15 +1,18 @@
 // Site-wide constants
 export const SITE_CONFIG = {
-    name: 'ذكاء عملي',
-    nameEn: 'Zakaa Amaly',
-    logo: '/images/logo.png', // Added logo path
-    userCount: '+1,200',
+    name: 'أثير',
+    nameEn: 'AIR',
+    tagline: 'Arab Intelligence Repository',
+    description: 'مستودع الذكاء العربي - منصة شاملة للأنظمة والأدوات والمعرفة في مجال الذكاء الاصطناعي',
     url: 'https://arabic-ai-blog.vercel.app',
-    description: 'منصة عربية تنفيذية تعلمك كيفية تحويل الذكاء الاصطناعي من مجرد أداة للتجربة إلى نظام عملي يوفر لك الإنتاجية، الوقت، والمال.',
-    descriptionEn: 'A practical Arabic platform that teaches you how to transform AI from an experimental tool into a working system that saves you productivity, time, and money.',
     author: 'Ahmed Esam',
     twitterHandle: '@zakaa_ai',
     email: 'hello@zakaa.ai',
+    socialLinks: {
+        twitter: 'https://x.com/zakaa_ai',
+        linkedin: 'https://linkedin.com/company/zakaa-ai',
+        github: 'https://github.com/ahmdesam96'
+    }
 } as const;
 
 export const SOCIAL_LINKS = {
@@ -21,6 +24,7 @@ export const SOCIAL_LINKS = {
 export const NAV_ITEMS = [
     { href: '/blog', label: 'المدونة التقنية' },
     { href: '/systems', label: 'الأنظمة الجاهزة' },
+    { href: '/creators', label: 'دليل الصُنّاع' },
     { href: '/tools', label: 'دليل الأدوات' },
     { href: '/consultancy', label: 'استشارات ونماذج', isBold: true },
     { href: '/about', label: 'من نحن' },

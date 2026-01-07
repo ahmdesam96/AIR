@@ -25,7 +25,7 @@ export function BeforeAfter() {
             <div className="container mx-auto px-4 max-w-6xl relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl font-bold mb-4">سترى الفرق بنفسك</h2>
-                    <p className="text-xl text-muted-foreground">كيف يتغير يومك بعد استخدام أنظمة ذكاء عملي؟</p>
+                    <p className="text-xl text-muted-foreground">كيف يتغير يومك بعد استخدام أنظمة أثير | AIR؟</p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-8">
@@ -50,7 +50,7 @@ export function BeforeAfter() {
 
                                 {/* After */}
                                 <div className="relative p-6 rounded-2xl bg-green-500/5 border border-green-500/20">
-                                    <div className="absolute -top-3 right-6 px-3 py-1 rounded-full bg-green-500 text-white text-xs font-bold">بـ ذكاء عملي</div>
+                                    <div className="absolute -top-3 right-6 px-3 py-1 rounded-full bg-green-500 text-white text-xs font-bold">مع أثير | AIR</div>
                                     <div className="flex gap-4">
                                         <Check className="w-6 h-6 text-green-500 shrink-0" />
                                         <p className="text-foreground font-medium leading-relaxed">{item.after}</p>

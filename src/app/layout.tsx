@@ -72,11 +72,14 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "ذكاء",
+              "name": "أثير | AIR",
+              "alternateName": "Arab Intelligence Repository",
               "url": "https://arabic-ai-blog.vercel.app",
+              "description": "مستودع الذكاء العربي - منصة شاملة للأنظمة والأدوات والمعرفة في مجال الذكاء الاصطناعي",
+              "inLanguage": "ar",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://arabic-ai-blog.vercel.app/search?q={search_term_string}",
+                "target": "https://arabic-ai-blog.vercel.app/blog?search={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })
@@ -88,9 +91,15 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "ذكاء",
+              "name": "أثير | AIR",
+              "alternateName": "Arab Intelligence Repository",
               "url": "https://arabic-ai-blog.vercel.app",
-              "logo": "https://arabic-ai-blog.vercel.app/logo.png",
+              "logo": "https://arabic-ai-blog.vercel.app/images/brand/air-logo-full.png",
+              "description": "مستودع الذكاء العربي - منصة شاملة للأنظمة والأدوات والمعرفة في مجال الذكاء الاصطناعي",
+              "founder": {
+                "@type": "Person",
+                "name": "Ahmed Esam"
+              },
               "sameAs": [
                 "https://x.com/zakaa_ai",
                 "https://linkedin.com/company/zakaa-ai"

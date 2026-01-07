@@ -10,17 +10,19 @@ export const Header = () => {
         <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container mx-auto flex h-16 items-center justify-between px-4">
                 <Link href="/" className="flex items-center gap-3 group">
-                    <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-110">
-                        {/* Logo Image */}
+                    <div className="relative w-auto h-10 transition-transform duration-300 group-hover:scale-105">
+                        {/* AIR Logo - switches based on theme */}
                         <img
-                            src="/images/logo.png"
-                            alt="Zakaa Logo"
-                            className="w-full h-full object-contain"
+                            src="/images/brand/air-logo-full.png"
+                            alt="AIR - Arab Intelligence Repository"
+                            className="h-10 w-auto object-contain dark:hidden"
+                        />
+                        <img
+                            src="/images/brand/air-logo-dark.png"
+                            alt="AIR - Arab Intelligence Repository"
+                            className="h-10 w-auto object-contain hidden dark:block"
                         />
                     </div>
-                    <span className="text-2xl font-extrabold tracking-tight text-foreground group-hover:text-primary transition-colors">
-                        ذكاء<span className="text-primary">.</span>
-                    </span>
                 </Link>
 
                 <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
@@ -29,6 +31,9 @@ export const Header = () => {
                     </Link>
                     <Link href="/systems" className="hover:text-primary transition-colors">
                         الأنظمة الجاهزة
+                    </Link>
+                    <Link href="/demos" className="hover:text-primary transition-colors text-blue-600 dark:text-blue-400 font-semibold">
+                        🎬 الديموهات
                     </Link>
                     <Link href="/tools" className="hover:text-primary transition-colors">
                         دليل الأدوات
