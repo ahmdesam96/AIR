@@ -10,6 +10,7 @@ const menuItems = [
     { title: "الرئيسية", href: "/" },
     { title: "المدونة التقنية", href: "/blog" },
     { title: "الأنظمة الجاهزة", href: "/systems" },
+    { title: "🎬 الديموهات", href: "/demos" },
     { title: "دليل الأدوات", href: "/tools" },
     { title: "استشارات ونماذج", href: "/consultancy" },
     { title: "من نحن", href: "/about" },
@@ -70,7 +71,9 @@ export const MobileMenu = () => {
                             </nav>
 
                             <div className="mt-8 pt-8 border-t border-border">
-                                <Button className="w-full" size="lg">اشترك الآن</Button>
+                                <Link href="/resources/10-hour-guide" onClick={toggleMenu}>
+                                    <Button className="w-full font-bold" size="lg">ابدأ هنا مجاناً</Button>
+                                </Link>
                             </div>
                         </motion.div>
                     </>
