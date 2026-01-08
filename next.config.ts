@@ -1,10 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: 'export',
+  basePath: '/AIR', // NOTE: Update this if your repository name is not 'AIR'
   turbopack: {
     root: __dirname,
   },
   images: {
+    unoptimized: true,
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
