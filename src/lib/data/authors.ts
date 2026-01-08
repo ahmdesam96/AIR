@@ -9,7 +9,7 @@ export const paymentDetails: PaymentDetails = {
 export const authors: Record<string, Author> = {
     ahmed: {
         name: "أحمد عصام",
-        avatar: "/images/ahmed-esam.png", // Updated to user provided image
+        avatar: "/AIR/images/ahmed-esam.png", // Updated to user provided image
         role: "مؤسس أثير | AIR",
         bio: "رائد أعمال تقني مهتم بتبسيط الذكاء الاصطناعي للشركات الناشئة.",
         twitter: "ahmed_esam",

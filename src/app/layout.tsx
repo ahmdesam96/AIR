@@ -61,7 +61,7 @@ export default function RootLayout({
       <head>
         <link
           rel="preload"
-          href="/fonts/Inter-VariableFont_slnt,wght.ttf"
+          href="/AIR/fonts/Inter-VariableFont_slnt,wght.ttf"
           as="font"
           type="font/ttf"
           crossOrigin="anonymous"
@@ -74,7 +74,7 @@ export default function RootLayout({
               "@type": "WebSite",
               "name": "أثير | AIR",
               "alternateName": "Arab Intelligence Repository",
-              "url": "https://arabic-ai-blog.vercel.app",
+              "url": "https://ahmdesam96.github.io/AIR",
               "description": "مستودع الذكاء العربي - منصة شاملة للأنظمة والأدوات والمعرفة في مجال الذكاء الاصطناعي",
               "inLanguage": "ar",
               "potentialAction": {

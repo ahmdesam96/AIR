@@ -23,7 +23,7 @@ export const MidPageCTA = () => {
 
                 <div className="relative w-full max-w-sm mx-auto mb-8 rounded-2xl overflow-hidden shadow-2xl border border-border/50">
                     <img
-                        src="/images/guide-promo.png"
+                        src="/AIR/images/guide-promo.png"
                         alt="دليل ذكاء عملي الجديد"
                         className="w-full h-auto object-cover"
                     />

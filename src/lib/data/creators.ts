@@ -22,7 +22,7 @@ export const creators: Creator[] = [
         ],
         location: { country: "Egypt" },
         updatedAt: "2024-05-20",
-        image: "/images/authors/ahmed.png",
+        image: "/AIR/images/authors/ahmed.png",
     },
     {
         id: "2",
@@ -44,7 +44,7 @@ export const creators: Creator[] = [
         ],
         location: { country: "UAE" },
         updatedAt: "2024-05-18",
-        image: "/images/authors/omar.png",
+        image: "/AIR/images/authors/omar.png",
     },
     {
         id: "3",
