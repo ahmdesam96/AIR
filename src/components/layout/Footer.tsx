@@ -9,15 +9,17 @@ export const Footer = () => {
             <div className="container mx-auto px-4 py-12 md:py-16">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div className="md:col-span-2 space-y-4">
-                        <Link href="/" className="inline-block relative w-32 md:w-40 h-10 md:h-12">
+                        <Link href="/" className="inline-block relative w-32 md:w-40 h-10 md:h-12" aria-label="أثير | AIR - الصفحة الرئيسية">
                             <img
-                                src="/images/brand/air-logo-full.png"
-                                alt="أثير | AIR"
+                                src="/AIR/images/brand/air-logo-full.png"
+                                alt=""
+                                aria-hidden="true"
                                 className="w-full h-full object-contain dark:hidden"
                             />
                             <img
-                                src="/images/brand/air-logo-dark.png"
-                                alt="أثير | AIR"
+                                src="/AIR/images/brand/air-logo-dark.png"
+                                alt=""
+                                aria-hidden="true"
                                 className="w-full h-full object-contain hidden dark:block"
                             />
                         </Link>

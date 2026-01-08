@@ -150,7 +150,7 @@ export default function Home() {
                 <span className="p-2 rounded-full bg-green-500/10 text-green-600"><Check className="w-6 h-6" /></span>
                 ذكاء عملي
               </h3>
-              <ul className="space-y-5 text-foreground font-medium">
+              <ul className="space-y-3 text-foreground font-medium">
                 <li className="flex items-start gap-3">
                   <div className="p-1 rounded-full bg-green-500/20 text-green-600 mt-1"><Check className="w-4 h-4" /></div>
                   <span>أنظمة جاهزة للنسخ واللصق فوراً</span>

@@ -8,7 +8,7 @@ export function formatDateArabic(date: string | Date): string {
   const day = String(d.getDate()).padStart(2, '0');
 
   const formatted = `${day}/${month}/${year}`;
-  return formatted.replace(/\d/g, (digit) => arabicNums[parseInt(digit)]);
+  return formatted;
 }
 
 // Format date in English format

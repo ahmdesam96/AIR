@@ -104,6 +104,8 @@ export function NewsletterSignup({ variant = "default" }: NewsletterSignupProps)
                                 placeholder="name@example.com"
                                 value={email}
                                 onChange={(e) => { setEmail(e.target.value); setError(""); }}
+                                name="email"
+                                autoComplete="email"
                                 className={`w-full h-14 px-6 bg-secondary/5 border rounded-xl text-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all ${error ? 'border-red-500' : 'border-border'}`}
                                 required
                                 aria-required="true"
@@ -118,6 +120,7 @@ export function NewsletterSignup({ variant = "default" }: NewsletterSignupProps)
                         </div>
                         <Button
                             size="lg"
+                            variant="primary"
                             type="submit"
                             className="h-14 px-8 text-lg font-bold shadow-lg shadow-primary/20 whitespace-nowrap"
                             disabled={loading}
