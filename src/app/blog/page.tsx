@@ -11,10 +11,14 @@ export const metadata: Metadata = {
     },
 };
 
+import { Suspense } from "react";
+
 export default function BlogPage() {
     return (
         <div className="container mx-auto px-4 py-12">
-            <BlogList />
+            <Suspense fallback={<div>جاري تحميل المقالات...</div>}>
+                <BlogList />
+            </Suspense>
         </div>
     );
 }

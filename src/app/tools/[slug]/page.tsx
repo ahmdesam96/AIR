@@ -7,6 +7,13 @@ import { Badge } from "@/components/ui/Badge";
 import { ArrowLeft, Globe } from "lucide-react";
 import { RichContent } from "@/components/RichContent";
 
+
+export function generateStaticParams() {
+    return tools.map((tool) => ({
+        slug: tool.slug,
+    }));
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const decodedSlug = decodeURIComponent(slug);

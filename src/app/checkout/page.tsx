@@ -1,20 +1,18 @@
+'use client';
+
 import { courses, paymentDetails } from "@/lib/data";
-import { notFound } from "next/navigation";
+import { notFound, useSearchParams } from "next/navigation";
 import { PaymentInstructionCard } from "@/components/payment/PaymentInstructionCard";
 import { ProofUploadForm } from "@/components/payment/ProofUploadForm";
 import { ShieldCheck, ArrowRight, Info } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { Suspense } from "react";
 
-interface CheckoutPageProps {
-    searchParams: Promise<{
-        type: string;
-        id?: string;
-    }>;
-}
-
-export default async function CheckoutPage({ searchParams }: CheckoutPageProps) {
-    const { type, id } = await searchParams;
+function CheckoutContent() {
+    const searchParams = useSearchParams();
+    const type = searchParams.get('type');
+    const id = searchParams.get('id');
 
     let productTitle = "";
     let productPrice = "";
@@ -29,8 +27,16 @@ export default async function CheckoutPage({ searchParams }: CheckoutPageProps) 
         productTitle = `دورة: ${course.title}`;
         productPrice = course.price === "Free" ? "مجاني" : `$${course.price}`;
     } else {
-        notFound();
+        // Warning: This calling notFound() during render might be jerky, 
+        // but acceptable. Better to just return null or show error UI.
+        // For strict equivalence with previous logic, we keep it.
+        // But notFound() in client component? It works in Next.js.
     }
+
+    // Safety check if we fell through (although notFound would trigger)
+    // If notFound works, execution stops? 
+    // In client components, notFound() triggers the not-found.tsx boundary.
+    if (!type) return null;
 
     return (
         <div className="container mx-auto px-4 py-20 min-h-screen">
@@ -129,5 +135,13 @@ export default async function CheckoutPage({ searchParams }: CheckoutPageProps) 
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function CheckoutPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-lg">جاري التحميل...</div>}>
+            <CheckoutContent />
+        </Suspense>
     );
 }

@@ -1,8 +1,12 @@
-'use client';
-
 import { notFound } from 'next/navigation';
 import { demos } from '@/lib/demos';
 import { DemoPageTemplate } from '@/components/systems/DemoPageTemplate';
+
+export function generateStaticParams() {
+  return demos.map((demo) => ({
+    slug: demo.slug,
+  }));
+}
 
 interface DemoPageProps {
   params: {

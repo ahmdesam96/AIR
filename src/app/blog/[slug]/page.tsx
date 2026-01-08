@@ -15,6 +15,13 @@ interface PageProps {
     }>;
 }
 
+
+export function generateStaticParams() {
+    return posts.map((post) => ({
+        slug: post.slug,
+    }));
+}
+
 export async function generateMetadata({ params }: PageProps) {
     const { slug } = await params;
     const decodedSlug = decodeURIComponent(slug);

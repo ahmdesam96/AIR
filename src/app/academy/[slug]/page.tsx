@@ -12,6 +12,13 @@ interface PageProps {
     }>;
 }
 
+
+export function generateStaticParams() {
+    return courses.map((course) => ({
+        slug: course.slug,
+    }));
+}
+
 export default async function CourseDetailPage({ params }: PageProps) {
     const { slug } = await params;
     const decodedSlug = decodeURIComponent(slug);

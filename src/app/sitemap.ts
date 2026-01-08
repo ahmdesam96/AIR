@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next';
 import { posts, tools, systems, courses } from '@/lib/data';
 
+export const dynamic = 'force-static';
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://arabic-ai-blog.vercel.app';
+    const baseUrl = 'https://ahmdesam96.github.io/AIR';
 
     const staticRoutes = [
         '',
