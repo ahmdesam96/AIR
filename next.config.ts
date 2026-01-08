@@ -1,13 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
-  basePath: '/AIR', // NOTE: Update this if your repository name is not 'AIR'
+  // output: 'export', // Disabled for Vercel
+  // basePath: '/AIR', // Disabled for Vercel
   turbopack: {
     root: __dirname,
   },
   images: {
-    unoptimized: true,
+    // unoptimized: true, // Disabled for Vercel
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",

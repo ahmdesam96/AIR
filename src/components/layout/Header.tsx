@@ -13,12 +13,12 @@ export const Header = () => {
                     <div className="relative w-auto h-10 transition-transform duration-300 group-hover:scale-105">
                         {/* AIR Logo - switches based on theme */}
                         <img
-                            src="/AIR/images/brand/air-logo-full.png"
+                            src="/images/brand/air-logo-full.png"
                             alt="AIR - Arab Intelligence Repository"
                             className="h-10 w-auto object-contain dark:hidden"
                         />
                         <img
-                            src="/AIR/images/brand/air-logo-dark.png"
+                            src="/images/brand/air-logo-dark.png"
                             alt="AIR - Arab Intelligence Repository"
                             className="h-10 w-auto object-contain hidden dark:block"
                         />
