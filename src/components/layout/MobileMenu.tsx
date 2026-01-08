@@ -43,18 +43,11 @@ export const MobileMenu = () => {
             {isOpen && (
                 <>
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onClick={toggleMenu}
-                        className="fixed inset-0 z-[9999] bg-background/80 backdrop-blur-sm"
-                    />
-                    <motion.div
-                        initial={{ x: "100%" }}
-                        animate={{ x: 0 }}
-                        exit={{ x: "100%" }}
+                        initial={{ opacity: 0, y: "100%" }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: "100%" }}
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                        className="fixed inset-y-0 right-0 z-[10000] w-full sm:w-80 bg-background border-l border-border shadow-xl h-[100dvh] flex flex-col"
+                        className="fixed inset-0 z-[10000] w-full h-[100dvh] bg-background flex flex-col"
                     >
                         <div className="p-6 flex-1 overflow-y-auto">
                             <div className="flex justify-between items-center mb-8">
@@ -68,14 +61,14 @@ export const MobileMenu = () => {
                                 {menuItems.map((item, index) => (
                                     <motion.div
                                         key={item.href}
-                                        initial={{ opacity: 0, x: 20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: index * 0.1 }}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.1 + index * 0.05 }}
                                     >
                                         <Link
                                             href={item.href}
                                             onClick={toggleMenu}
-                                            className="block text-lg font-medium text-foreground hover:text-primary transition-colors py-2"
+                                            className="block text-2xl font-bold text-foreground hover:text-primary transition-colors py-3 border-b border-border/50"
                                         >
                                             {item.title}
                                         </Link>
@@ -83,9 +76,9 @@ export const MobileMenu = () => {
                                 ))}
                             </nav>
 
-                            <div className="mt-8 pt-8 border-t border-border">
+                            <div className="mt-8 pt-8">
                                 <Link href="/resources/10-hour-guide" onClick={toggleMenu}>
-                                    <Button className="w-full font-bold" size="lg">ابدأ هنا مجاناً</Button>
+                                    <Button className="w-full font-bold text-lg h-12" size="lg">ابدأ هنا مجاناً</Button>
                                 </Link>
                             </div>
                         </div>
