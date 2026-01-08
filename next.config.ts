@@ -1,13 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // output: 'export', // Disabled for Vercel
-  // basePath: '/AIR', // Disabled for Vercel
+  output: 'export',
+  basePath: '/AIR',
   turbopack: {
     root: __dirname,
   },
   images: {
-    // unoptimized: true, // Disabled for Vercel
+    unoptimized: true,
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",

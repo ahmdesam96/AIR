@@ -616,7 +616,7 @@ export const posts: BlogPost[] = [
         title: "أفضل 5 أدوات لتنظيم الوقت لرواد الأعمال في 2025",
         excerpt: "مقارنة شاملة بين Notion و Trello و ClickUp مع نصائح لاختيار الأداة المناسبة لفريق عملك.",
         content: `
-    <img src = "/images/blog/productivity.png" alt = "Productivity Tools Cover" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
+    <img src = "/AIR/images/blog/productivity.png" alt = "Productivity Tools Cover" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
 
     <h2>لماذا أدوات الإنتاجية ليست رفاهية؟</h2>
     <p> في عام 2025، المنافسة لم تعد من يعمل بجد أكثر، بل من يعمل بذكاء أكثر...</p>
@@ -696,7 +696,7 @@ export const posts: BlogPost[] = [
         title: "تحديثات Google Gemini الجديدة: ما الذي تغير؟",
         excerpt: "نظرة سريعة على المميزات الجديدة في نموذج Gemini 1.5 Pro وكيف يمكنك الاستفادة منها في تحليل البيانات.",
         content: `
-    <img src = "/images/blog/gemini.png" alt = "Gemini Updates Cover" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
+    <img src = "/AIR/images/blog/gemini.png" alt = "Gemini Updates Cover" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
 
     <h2>عصر جديد من نماذج جوجل </h2>
     <p> أعلنت Google مؤخراً عن تحديثات ضخمة لنموذجها الرائد Gemini...</p>
@@ -754,7 +754,7 @@ export const posts: BlogPost[] = [
         title: "5 أدوات ذكاء اصطناعي ستغير قواعد اللعبة في 2025",
         excerpt: "قائمة شاملة بأقوى أدوات الذكاء الاصطناعي التي يجب على كل رائد أعمال معرفتها، من البحث الذكي إلى صناعة المحتوى.",
         content: `
-    <img src = "/images/blog/blog_top_tools.png" alt = "Top AI Tools Cover" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
+    <img src = "/AIR/images/blog/blog_top_tools.png" alt = "Top AI Tools Cover" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
 
     
     <p> في عالم يتطور بسرعة الضوء، لم يعد استخدام الذكاء الاصطناعي رفاهية، بل ضرورة للبقاء في المنافسة...</p>
@@ -816,7 +816,7 @@ export const posts: BlogPost[] = [
         title: "دليل المبتدئين الشامل للذكاء الاصطناعي في 2025",
         excerpt: "كل ما تحتاج معرفته عن الذكاء الاصطناعي من الصفر: المفاهيم الأساسية، الأدوات، وكيف تبدأ رحلتك.",
         content: `
-    <img src = "/images/blog/ai-beginners.png" alt = "AI Beginners Guide" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
+    <img src = "/AIR/images/blog/ai-beginners.png" alt = "AI Beginners Guide" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
 
     <h2>مقدمة: لماذا يجب أن تهتم بالذكاء الاصطناعي؟</h2>
     <p> الذكاء الاصطناعي لم يعد خيالاً علمياً أو حكراً على المتخصصين. في 2025، أصبح أداة يومية يستخدمها الملايين لكتابة الإيميلات، تصميم الصور، البرمجة، وحتى التعلم. إذا كنت لا تستخدمه، فأنت تتخلف عن الركب.</p>
@@ -912,7 +912,7 @@ export const posts: BlogPost[] = [
         title: "كيف تصنع محتوى احترافي باستخدام الذكاء الاصطناعي",
         excerpt: "دليل عملي لصناع المحتوى: من الفكرة للنشر باستخدام أدوات AI المختلفة.",
         content: `
-    <img src = "/images/blog/ai-content.png" alt = "AI Content Creation" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
+    <img src = "/AIR/images/blog/ai-content.png" alt = "AI Content Creation" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
 
     <h2>ثورة صناعة المحتوى </h2>
     <p> ما كان يحتاج فريقاً من الكتّاب والمصممين والمحررين، أصبح اليوم ممكناً لشخص واحد بمساعدة الذكاء الاصطناعي. هذا ليس بديلاً عن الإبداع البشري، بل هو تضخيم له.</p>
@@ -1026,7 +1026,7 @@ export const posts: BlogPost[] = [
         title: "مستقبل الذكاء الاصطناعي في العالم العربي: الفرص والتحديات",
         excerpt: "تحليل شامل لوضع الذكاء الاصطناعي في المنطقة العربية والفرص الهائلة التي تنتظر الجيل الجديد.",
         content: `
-    <img src = "/images/blog/ai-arab.png" alt = "AI in Arab World" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
+    <img src = "/AIR/images/blog/ai-arab.png" alt = "AI in Arab World" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
 
     <h2>لحظة تاريخية </h2>
     <p> نحن نعيش ما يمكن تسميته "لحظة الإنترنت الثانية". كما غيّر الإنترنت كل شيء في التسعينات، يعيد الذكاء الاصطناعي تشكيل العالم الآن. والسؤال: أين العالم العربي من هذا كله؟</p>
