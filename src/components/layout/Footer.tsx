@@ -68,6 +68,12 @@ export const Footer = () => {
                         <h3 className="font-bold mb-4 text-lg">تواصل معنا</h3>
                         <ul className="space-y-3 text-sm font-medium">
                             <li>
+                                <a href="https://linkie.bio/ahmdesam96" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2">
+                                    🔗 جميع روابط التواصل
+                                </a>
+                            </li>
+                            {/* 
+                            <li>
                                 <a href="https://x.com/zakaa_ai" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2">
                                     تويتر (X)
                                 </a>
@@ -82,6 +88,7 @@ export const Footer = () => {
                                     البريد الإلكتروني
                                 </a>
                             </li>
+                            */}
                         </ul>
                     </div>
                 </div>
