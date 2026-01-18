@@ -1,0 +1,19 @@
+{
+    "common": {
+        "name": "أثير",
+        "nameEn": "AIR",
+        "tagline": "Arab Intelligence Repository",
+        "description": "مستودع الذكاء العربي - منصة شاملة للأنظمة والأدوات والمعرفة في مجال الذكاء الاصطناعي"
+    },
+    "nav": {
+        "blog": "المدونة التقنية",
+        "systems": "الأنظمة الجاهزة",
+        "creators": "دليل الصُنّاع",
+        "tools": "دليل الأدوات",
+        "consultancy": "استشارات ونماذج",
+        "about": "من نحن"
+    },
+    "footer": {
+        "mediaKit": "مركز المعلنين (Media Kit)"
+    }
+}

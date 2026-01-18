@@ -1,11 +1,11 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   output: 'export',
   basePath: '/AIR',
-  turbopack: {
-    root: __dirname,
-  },
   images: {
     unoptimized: true,
     formats: ['image/avif', 'image/webp'],
@@ -32,4 +32,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

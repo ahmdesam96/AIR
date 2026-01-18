@@ -3,7 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { XCircle, CheckCircle, Clock, Zap } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 interface VisualComparisonProps {
     before: {

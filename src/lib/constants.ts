@@ -4,6 +4,7 @@ export const SITE_CONFIG = {
     nameEn: 'AIR',
     tagline: 'Arab Intelligence Repository',
     description: 'مستودع الذكاء العربي - منصة شاملة للأنظمة والأدوات والمعرفة في مجال الذكاء الاصطناعي',
+    descriptionEn: 'Arab Intelligence Repository - A comprehensive platform for systems, tools, and knowledge in the field of AI',
     url: 'https://arabic-ai-blog.vercel.app',
     author: 'Ahmed Esam',
     twitterHandle: '@zakaa_ai',
@@ -22,19 +23,24 @@ export const SOCIAL_LINKS = {
 } as const;
 
 export const NAV_ITEMS = [
-    { href: '/blog', label: 'المدونة التقنية' },
-    { href: '/systems', label: 'الأنظمة الجاهزة' },
-    { href: '/creators', label: 'دليل الصُنّاع' },
-    { href: '/tools', label: 'دليل الأدوات' },
-    { href: '/consultancy', label: 'استشارات ونماذج', isBold: true },
-    { href: '/about', label: 'من نحن' },
+    { href: '/blog', label: { ar: 'المدونة التقنية', en: 'Tech Blog' } },
+    { href: '/systems', label: { ar: 'الأنظمة الجاهزة', en: 'Ready Systems' } },
+    { href: '/creators', label: { ar: 'دليل الصُنّاع', en: 'Creators Directory' } },
+    { href: '/tools', label: { ar: 'دليل الأدوات', en: 'Tools Directory' } },
+    { href: '/consultancy', label: { ar: 'استشارات ونماذج', en: 'Consultancy & Models' }, isBold: true },
+    { href: '/about', label: { ar: 'من نحن', en: 'About Us' } },
 ] as const;
 
 export const FOOTER_LINKS = [
     ...NAV_ITEMS,
-    { href: '/media-kit', label: 'مركز المعلنين (Media Kit)', isBold: true, isPrimary: true },
+    { href: '/media-kit', label: { ar: 'مركز المعلنين (Media Kit)', en: 'Media Kit' }, isBold: true, isPrimary: true },
 ] as const;
 
 // Categories
-export const BLOG_CATEGORIES = ['الكل', 'ذكاء اصطناعي', 'إنتاجية', 'أخبار'] as const;
+export const BLOG_CATEGORIES = [
+    { ar: 'الكل', en: 'All' },
+    { ar: 'ذكاء اصطناعي', en: 'AI' },
+    { ar: 'إنتاجية', en: 'Productivity' },
+    { ar: 'أخبار', en: 'News' }
+] as const;
 export type BlogCategory = (typeof BLOG_CATEGORIES)[number];

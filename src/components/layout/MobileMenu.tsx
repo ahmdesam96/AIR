@@ -1,28 +1,33 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useLocale } from "next-intl";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 
-const menuItems = [
-    { title: "الرئيسية", href: "/" },
-    { title: "المدونة التقنية", href: "/blog" },
-    { title: "الأنظمة الجاهزة", href: "/systems" },
-    { title: "🎬 الديموهات", href: "/demos" },
-    { title: "دليل الأدوات", href: "/tools" },
-    { title: "استشارات ونماذج", href: "/consultancy" },
-    { title: "من نحن", href: "/about" },
-];
-
-export const MobileMenu = () => {
+export const MobileMenu = ({ locale: propLocale }: { locale?: string }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
+    const hookLocale = useLocale();
+    const locale = propLocale || hookLocale;
+    const isAr = locale === 'ar';
+
+    const menuItems = [
+        { title: isAr ? "الرئيسية" : "Home", href: `/${locale}` },
+        { title: isAr ? "المدونة التقنية" : "Tech Blog", href: `/${locale}/blog` },
+        { title: isAr ? "الأنظمة الجاهزة" : "Ready Systems", href: `/${locale}/systems` },
+        { title: isAr ? "🎬 الديموهات" : "🎬 Demos", href: `/${locale}/demos` },
+        { title: isAr ? "دليل الأدوات" : "Tools", href: `/${locale}/tools` },
+        { title: isAr ? "استشارات ونماذج" : "Consultancy", href: `/${locale}/consultancy` },
+        { title: isAr ? "من نحن" : "About Us", href: `/${locale}/about` },
+    ];
 
     useEffect(() => {
-        setMounted(true);
+        const timer = setTimeout(() => setMounted(true), 0);
+        return () => clearTimeout(timer);
     }, []);
 
     useEffect(() => {
@@ -47,11 +52,14 @@ export const MobileMenu = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: "100%" }}
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                        className="fixed inset-0 z-[10000] w-full h-[100dvh] bg-background flex flex-col"
+                        className={`fixed inset-0 z-[10000] w-full h-[100dvh] bg-background flex flex-col ${isAr ? 'text-right' : 'text-left'}`}
+                        dir={isAr ? 'rtl' : 'ltr'}
                     >
                         <div className="p-6 flex-1 overflow-y-auto">
                             <div className="flex justify-between items-center mb-8">
-                                <span className="text-2xl font-bold text-primary">القائمة</span>
+                                <span className="text-2xl font-bold text-primary">
+                                    {isAr ? 'القائمة' : 'Menu'}
+                                </span>
                                 <Button variant="ghost" size="sm" onClick={toggleMenu}>
                                     <X className="h-6 w-6" />
                                 </Button>
@@ -77,8 +85,10 @@ export const MobileMenu = () => {
                             </nav>
 
                             <div className="mt-8 pt-8">
-                                <Link href="/resources/10-hour-guide" onClick={toggleMenu}>
-                                    <Button className="w-full font-bold text-lg h-12" size="lg">ابدأ هنا مجاناً</Button>
+                                <Link href={`/${locale}/resources/10-hour-guide`} onClick={toggleMenu}>
+                                    <Button className="w-full font-bold text-lg h-12" size="lg">
+                                        {isAr ? 'ابدأ هنا مجاناً' : 'Start Here Free'}
+                                    </Button>
                                 </Link>
                             </div>
                         </div>
@@ -90,7 +100,7 @@ export const MobileMenu = () => {
 
     return (
         <div className="md:hidden">
-            <Button variant="ghost" size="sm" onClick={toggleMenu}>
+            <Button variant="ghost" size="sm" onClick={toggleMenu} aria-label={isAr ? "افتح القائمة" : "Open menu"}>
                 <Menu className="h-6 w-6" />
             </Button>
             {mounted && createPortal(menuContent, document.body)}

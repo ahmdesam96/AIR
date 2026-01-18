@@ -1,45 +1,49 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Creator, CreatorCategory, ContentLevel, PlatformType } from "@/lib/types/creators";
+import { Creator, CreatorCategory, ContentLevel } from "@/lib/types/creators";
 import { CreatorCard } from "./CreatorCard";
-import { Search, Filter, X } from "lucide-react";
+import { Search } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { motion, AnimatePresence } from "framer-motion";
-import { Badge } from "@/components/ui/Badge";
+import { getLocalizedContent } from "@/lib/data";
 
 interface CreatorsBrowserProps {
     initialCreators: Creator[];
+    locale?: string;
 }
 
-const CATEGORIES: { value: CreatorCategory | "all"; label: string }[] = [
-    { value: "all", label: "الكل" },
-    { value: "education", label: "تعليم" },
-    { value: "business", label: "أعمال" },
-    { value: "programming", label: "برمجة" },
-    { value: "design", label: "تصميم" },
-    { value: "news", label: "أخبار" },
-    { value: "reviews", label: "مراجعات" },
-];
-
-export function CreatorsBrowser({ initialCreators }: CreatorsBrowserProps) {
+export function CreatorsBrowser({ initialCreators, locale = 'ar' }: CreatorsBrowserProps) {
+    const isAr = locale === 'ar';
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState<CreatorCategory | "all">("all");
-    const [selectedLevel, setSelectedLevel] = useState<ContentLevel | "all">("all");
+    const [selectedLevel] = useState<ContentLevel | "all">("all");
+
+    const categories: { value: CreatorCategory | "all"; label: string }[] = useMemo(() => [
+        { value: "all", label: isAr ? "الكل" : "All" },
+        { value: "education", label: isAr ? "تعليم" : "Education" },
+        { value: "business", label: isAr ? "أعمال" : "Business" },
+        { value: "programming", label: isAr ? "برمجة" : "Programming" },
+        { value: "design", label: isAr ? "تصميم" : "Design" },
+        { value: "news", label: isAr ? "أخبار" : "News" },
+        { value: "reviews", label: isAr ? "مراجعات" : "Reviews" },
+    ], [isAr]);
 
     const filteredCreators = useMemo(() => {
         return initialCreators.filter((creator) => {
+            const name = getLocalizedContent(creator.name, locale);
+            const bio = creator.bio ? getLocalizedContent(creator.bio, locale) : '';
+
             const matchesSearch =
-                creator.name.ar.includes(searchQuery) ||
-                (creator.name.en && creator.name.en.toLowerCase().includes(searchQuery.toLowerCase())) ||
-                creator.bio.includes(searchQuery);
+                name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                bio.toLowerCase().includes(searchQuery.toLowerCase());
 
             const matchesCategory = selectedCategory === "all" || creator.category === selectedCategory;
             const matchesLevel = selectedLevel === "all" || creator.level === selectedLevel;
 
             return matchesSearch && matchesCategory && matchesLevel;
         });
-    }, [initialCreators, searchQuery, selectedCategory, selectedLevel]);
+    }, [initialCreators, searchQuery, selectedCategory, selectedLevel, locale]);
 
     // Sort: Featured first
     const sortedCreators = useMemo(() => {
@@ -51,22 +55,23 @@ export function CreatorsBrowser({ initialCreators }: CreatorsBrowserProps) {
     }, [filteredCreators]);
 
     return (
-        <div className="space-y-8">
+        <div className={`space-y-8 ${isAr ? 'text-right' : 'text-left'}`}>
             {/* Search and Filter Section */}
-            <div className="flex flex-col md:flex-row gap-4 justify-between items-center sticky top-20 z-30 bg-background/80 backdrop-blur-md p-4 rounded-2xl border border-border/50 shadow-sm">
+            <div className={`flex flex-col md:flex-row gap-4 justify-between items-center sticky top-20 z-30 bg-background/80 backdrop-blur-md p-4 rounded-2xl border border-border/50 shadow-sm ${isAr ? '' : 'flex-row-reverse'}`}>
                 <div className="relative w-full md:w-96">
-                    <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                    <Search className={`absolute ${isAr ? 'right-3' : 'left-3'} top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4`} />
                     <input
                         type="text"
-                        placeholder="ابحث عن صانع محتوى..."
+                        placeholder={isAr ? "ابحث عن صانع محتوى..." : "Search for a creator..."}
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full h-10 pr-10 pl-4 rounded-xl border border-input bg-background focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+                        className={`w-full h-10 ${isAr ? 'pr-10 pl-4' : 'pl-10 pr-4'} rounded-xl border border-input bg-background focus:ring-2 focus:ring-primary focus:border-transparent text-sm`}
+                        dir={isAr ? 'rtl' : 'ltr'}
                     />
                 </div>
 
-                <div className="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 no-scrollbar">
-                    {CATEGORIES.map((cat) => (
+                <div className={`flex gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 no-scrollbar ${isAr ? '' : 'flex-row-reverse'}`}>
+                    {categories.map((cat) => (
                         <button
                             key={cat.value}
                             onClick={() => setSelectedCategory(cat.value)}
@@ -94,7 +99,7 @@ export function CreatorsBrowser({ initialCreators }: CreatorsBrowserProps) {
                                 exit={{ opacity: 0, scale: 0.95 }}
                                 transition={{ duration: 0.2 }}
                             >
-                                <CreatorCard creator={creator} />
+                                <CreatorCard creator={creator} locale={locale} />
                             </motion.div>
                         ))
                     ) : (
@@ -103,13 +108,13 @@ export function CreatorsBrowser({ initialCreators }: CreatorsBrowserProps) {
                             animate={{ opacity: 1 }}
                             className="col-span-full text-center py-20 text-muted-foreground"
                         >
-                            <p className="text-lg">لم يتم العثور على نتائج تطابق بحثك 🔍</p>
+                            <p className="text-lg">{isAr ? 'لم يتم العثور على نتائج تطابق بحثك 🔍' : 'No results matching your search 🔍'}</p>
                             <Button
                                 variant="ghost"
                                 onClick={() => { setSearchQuery(""); setSelectedCategory("all"); }}
                                 className="mt-2 underline"
                             >
-                                مسح الفلاتر
+                                {isAr ? 'مسح الفلاتر' : 'Clear filters'}
                             </Button>
                         </motion.div>
                     )}

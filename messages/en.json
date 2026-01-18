@@ -1,0 +1,19 @@
+{
+    "common": {
+        "name": "أثير",
+        "nameEn": "AIR",
+        "tagline": "Arab Intelligence Repository",
+        "description": "Arab Intelligence Repository - A comprehensive platform for systems, tools, and knowledge in AI"
+    },
+    "nav": {
+        "blog": "Tech Blog",
+        "systems": "Ready Systems",
+        "creators": "Creators Directory",
+        "tools": "Tools Directory",
+        "consultancy": "Consultancy & Models",
+        "about": "About Us"
+    },
+    "footer": {
+        "mediaKit": "Media Kit"
+    }
+}

@@ -4,51 +4,69 @@ import { useState, useMemo } from "react";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, CheckCircle2, XCircle } from "lucide-react";
 import { Tool } from "@/lib/data";
+import { useLocale } from "next-intl";
+import { getLocalizedContent } from "@/lib/i18n-utils";
 
 interface ToolsBrowserProps {
     initialTools: Tool[];
 }
 
-const categories = ["All", "Chatbots", "Design", "Productivity", "Coding"];
-
-const categoryLabels: Record<string, string> = {
-    "All": "الكل",
-    "Chatbots": "المحادثة",
-    "Design": "التصميم",
-    "Productivity": "الإنتاجية",
-    "Coding": "البرمجة"
-};
-
 export default function ToolsBrowser({ initialTools }: ToolsBrowserProps) {
+    const locale = useLocale();
+    const isRtl = locale === 'ar';
+
+    const categories = isRtl
+        ? ["الكل", "المحادثة", "التصميم", "الإنتاجية", "البرمجة"]
+        : ["All", "Chatbots", "Design", "Productivity", "Coding"];
+
+    const currentAll = categories[0];
+
     const [searchQuery, setSearchQuery] = useState("");
-    const [selectedCategory, setSelectedCategory] = useState("All");
+    const [selectedCategory, setSelectedCategory] = useState(currentAll);
+
+    // Categories mapping for data filtering
+    const categoryMapping = useMemo<Record<string, string>>(() => ({
+        "المحادثة": "Chatbots",
+        "التصميم": "Design",
+        "الإنتاجية": "Productivity",
+        "البرمجة": "Coding",
+        "Chatbots": "Chatbots",
+        "Design": "Design",
+        "Productivity": "Productivity",
+        "Coding": "Coding"
+    }), []);
 
     const filteredTools = useMemo(() => {
         return initialTools.filter((tool) => {
-            const matchesSearch = tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                tool.description.toLowerCase().includes(searchQuery.toLowerCase());
-            const matchesCategory = selectedCategory === "All" || tool.category === selectedCategory;
+            const name = getLocalizedContent(tool.name, locale);
+            const description = getLocalizedContent(tool.description, locale);
+
+            const matchesSearch = name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                description.toLowerCase().includes(searchQuery.toLowerCase());
+
+            const normalizedSelected = categoryMapping[selectedCategory] || selectedCategory;
+            const matchesCategory = selectedCategory === currentAll || tool.category === normalizedSelected;
 
             return matchesSearch && matchesCategory;
         });
-    }, [searchQuery, selectedCategory, initialTools]);
+    }, [searchQuery, selectedCategory, initialTools, currentAll, locale, categoryMapping]);
 
     return (
-        <div className="space-y-12">
+        <div className={`space-y-12 ${isRtl ? 'text-right' : 'text-left'}`}>
             {/* Search & Filter */}
             <div className="max-w-xl mx-auto space-y-6">
                 <div className="relative">
-                    <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground h-5 w-5" />
+                    <Search className={`absolute ${isRtl ? 'right-3' : 'left-3'} top-1/2 -translate-y-1/2 text-muted-foreground h-5 w-5`} />
                     <input
                         type="text"
-                        placeholder="ابحث عن أداة..."
+                        placeholder={isRtl ? "ابحث عن أداة..." : "Search for a tool..."}
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full h-12 pr-10 pl-4 rounded-xl border border-input bg-background/50 backdrop-blur-sm focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                        className={`w-full h-12 ${isRtl ? 'pr-10 pl-4' : 'pl-10 pr-4'} rounded-xl border border-input bg-background/50 backdrop-blur-sm focus:ring-2 focus:ring-primary focus:border-transparent transition-all`}
                     />
                 </div>
 
@@ -62,7 +80,7 @@ export default function ToolsBrowser({ initialTools }: ToolsBrowserProps) {
                                 : "bg-secondary/5 hover:bg-secondary/10 text-muted-foreground"
                                 }`}
                         >
-                            {categoryLabels[category]}
+                            {category}
                         </button>
                     ))}
                 </div>
@@ -80,7 +98,7 @@ export default function ToolsBrowser({ initialTools }: ToolsBrowserProps) {
                             exit={{ opacity: 0, scale: 0.9 }}
                             transition={{ duration: 0.2 }}
                         >
-                            <Card className="h-full flex flex-col hover:border-primary/50 transition-colors group bg-card/50 backdrop-blur-sm text-right">
+                            <Card className={`h-full flex flex-col hover:border-primary/50 transition-colors group bg-card/50 backdrop-blur-sm ${isRtl ? 'text-right' : 'text-left'}`}>
                                 <CardHeader>
                                     <div className="flex justify-between items-start mb-4">
                                         <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center text-2xl group-hover:bg-primary/20 transition-colors">
@@ -88,10 +106,12 @@ export default function ToolsBrowser({ initialTools }: ToolsBrowserProps) {
                                                 tool.category === "Design" ? "🎨" : "⚡"}
                                         </div>
                                         {tool.featured && (
-                                            <Badge variant="secondary" className="text-xs backdrop-blur-md bg-secondary/10 border-secondary/20">مميز</Badge>
+                                            <Badge variant="secondary" className="text-xs backdrop-blur-md bg-secondary/10 border-secondary/20">
+                                                {isRtl ? 'مميز' : 'Featured'}
+                                            </Badge>
                                         )}
                                     </div>
-                                    <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors">{tool.name}</h3>
+                                    <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors">{getLocalizedContent(tool.name, locale)}</h3>
                                     <p className="text-xs text-muted-foreground">{tool.category}</p>
                                 </CardHeader>
                                 <CardContent className="flex-1 space-y-4">
@@ -101,17 +121,19 @@ export default function ToolsBrowser({ initialTools }: ToolsBrowserProps) {
                                                 tool.pricingType === 'freemium' ? 'text-blue-600 border-blue-200 bg-blue-50' :
                                                     'text-orange-600 border-orange-200 bg-orange-50'
                                                 }`}>
-                                                {tool.pricingType === 'free' ? 'مجاني' :
-                                                    tool.pricingType === 'freemium' ? 'مجاني جزئياً' : 'مدفوع'}
+                                                {tool.pricingType === 'free' ? (isRtl ? 'مجاني' : 'Free') :
+                                                    tool.pricingType === 'freemium' ? (isRtl ? 'مجاني جزئياً' : 'Freemium') : (isRtl ? 'مدفوع' : 'Paid')}
                                             </Badge>
                                         )}
                                         {tool.featured && (
-                                            <Badge variant="secondary" className="text-[10px] bg-primary/10 text-primary border-primary/20">مميز</Badge>
+                                            <Badge variant="secondary" className="text-[10px] bg-primary/10 text-primary border-primary/20">
+                                                {isRtl ? 'مميز' : 'Featured'}
+                                            </Badge>
                                         )}
                                     </div>
 
                                     <p className="text-sm text-muted-foreground leading-relaxed">
-                                        {tool.description}
+                                        {getLocalizedContent(tool.description, locale)}
                                     </p>
 
                                     {/* Use Cases Section */}
@@ -120,11 +142,11 @@ export default function ToolsBrowser({ initialTools }: ToolsBrowserProps) {
                                             {tool.bestFor && tool.bestFor.length > 0 && (
                                                 <div className="space-y-1">
                                                     <span className="text-[10px] uppercase tracking-wider font-semibold text-green-600 flex items-center gap-1">
-                                                        <CheckCircle2 className="w-3 h-3" /> مثالي لـ
+                                                        <CheckCircle2 className="w-3 h-3" /> {isRtl ? 'مثالي لـ' : 'Best for'}
                                                     </span>
-                                                    <ul className="text-xs text-muted-foreground pr-4 space-y-1">
+                                                    <ul className={`text-xs text-muted-foreground ${isRtl ? 'pr-4' : 'pl-4'} space-y-1`}>
                                                         {tool.bestFor.slice(0, 2).map((item, i) => (
-                                                            <li key={i} className="list-disc">{item}</li>
+                                                            <li key={i} className="list-disc">{getLocalizedContent(item, locale)}</li>
                                                         ))}
                                                     </ul>
                                                 </div>
@@ -133,11 +155,11 @@ export default function ToolsBrowser({ initialTools }: ToolsBrowserProps) {
                                             {tool.notFor && tool.notFor.length > 0 && (
                                                 <div className="space-y-1">
                                                     <span className="text-[10px] uppercase tracking-wider font-semibold text-red-500 flex items-center gap-1">
-                                                        <XCircle className="w-3 h-3" /> لا يصلح لـ
+                                                        <XCircle className="w-3 h-3" /> {isRtl ? 'لا يصلح لـ' : 'Not for'}
                                                     </span>
-                                                    <ul className="text-xs text-muted-foreground pr-4 space-y-1">
-                                                        {tool.notFor.slice(0, 1).map((item, i) => ( // Show only 1 constraint to save space
-                                                            <li key={i} className="list-disc">{item}</li>
+                                                    <ul className={`text-xs text-muted-foreground ${isRtl ? 'pr-4' : 'pl-4'} space-y-1`}>
+                                                        {tool.notFor.slice(0, 2).map((item, i) => (
+                                                            <li key={i} className="list-disc">{getLocalizedContent(item, locale)}</li>
                                                         ))}
                                                     </ul>
                                                 </div>
@@ -149,11 +171,11 @@ export default function ToolsBrowser({ initialTools }: ToolsBrowserProps) {
                                     <div className="flex gap-3 w-full">
                                         <Link href={`/tools/${tool.slug}`} className="flex-1">
                                             <Button variant="secondary" className="w-full bg-secondary/5 hover:bg-primary shadow-sm hover:text-primary-foreground text-foreground border border-border transition-all duration-300">
-                                                اقرأ المزيد
+                                                {isRtl ? 'اقرأ المزيد' : 'Read More'}
                                             </Button>
                                         </Link>
                                         <a href={tool.affiliateLink || tool.link} target="_blank" rel="noopener noreferrer">
-                                            <Button variant="outline" className={`shrink-0 px-3 hover:scale-105 transition-transform ${tool.affiliateLink ? 'border-primary/50 text-primary' : ''}`} title={tool.affiliateLink ? "رابط إحالة" : "زيارة الموقع"}>
+                                            <Button variant="outline" className={`shrink-0 px-3 hover:scale-105 transition-transform ${tool.affiliateLink ? 'border-primary/50 text-primary' : ''}`} title={tool.affiliateLink ? (isRtl ? "رابط إحالة" : "Affiliate link") : (isRtl ? "زيارة الموقع" : "Visit site")}>
                                                 ↗
                                             </Button>
                                         </a>
@@ -167,7 +189,7 @@ export default function ToolsBrowser({ initialTools }: ToolsBrowserProps) {
 
             {filteredTools.length === 0 && (
                 <div className="text-center py-20">
-                    <p className="text-xl text-muted-foreground">لا توجد نتائج مطابقة لبحثك.</p>
+                    <p className="text-xl text-muted-foreground">{isRtl ? 'لا توجد نتائج مطابقة لبحثك.' : 'No results matching your search.'}</p>
                 </div>
             )}
         </div>

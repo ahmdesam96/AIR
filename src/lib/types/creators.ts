@@ -1,3 +1,5 @@
+import { LocalizableString } from "@/lib/data";
+
 export type CreatorCategory =
     | "education"
     | "reviews"
@@ -17,30 +19,27 @@ export interface CreatorPlatform {
 }
 
 export interface CreatorWork {
-    title: string;
+    title: LocalizableString;
     url: string;
     type: "video" | "article" | "thread" | "newsletter";
 }
 
 export interface Creator {
     id: string;
-    name: {
-        ar: string;
-        en?: string;
-    };
+    name: LocalizableString;
     slug: string;
     badge: "featured" | "normal";
     category: CreatorCategory;
-    bio: string;
-    bestFor: string[];
-    notSuitableFor?: string[];
+    bio: LocalizableString;
+    bestFor: LocalizableString[];
+    notSuitableFor?: LocalizableString[];
     topWorks: CreatorWork[];
     language: "ar" | "en" | "mixed";
     level: ContentLevel;
     platforms: CreatorPlatform[];
     location?: {
-        country: string;
-        city?: string;
+        country: LocalizableString;
+        city?: LocalizableString;
     };
     transparency?: {
         sponsors?: boolean;

@@ -20,7 +20,7 @@ export interface AnalyticsEvent {
   timestamp: string;
   userAgent?: string;
   language?: string;
-  [key: string]: any;
+  [key: string]: string | number | boolean | undefined | null;
 }
 
 class AnalyticsManager {
@@ -131,7 +131,7 @@ class AnalyticsManager {
    */
   private trackEvent(
     eventName: EventType,
-    eventData: Record<string, any>
+    eventData: Record<string, string | number | boolean | undefined | null>
   ) {
     const event: AnalyticsEvent = {
       eventName,
@@ -143,8 +143,8 @@ class AnalyticsManager {
     this.events.push(event);
 
     // Send to Google Analytics if available
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', eventName, eventData);
+    if (typeof window !== 'undefined' && 'gtag' in window) {
+      (window as unknown as { gtag: (...args: unknown[]) => void }).gtag('event', eventName, eventData);
     }
 
     // Log in development mode

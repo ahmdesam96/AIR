@@ -4,15 +4,20 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Command, Zap, FileText, Settings, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { systems, tools, posts } from "@/lib/data";
+import { systems, tools, posts, getLocalizedContent } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
-export const CommandPalette = () => {
+interface CommandPaletteProps {
+    locale?: string;
+}
+
+export const CommandPalette = ({ locale = 'ar' }: CommandPaletteProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [query, setQuery] = useState("");
     const [activeIndex, setActiveIndex] = useState(0);
     const router = useRouter();
     const inputRef = useRef<HTMLInputElement>(null);
+    const isAr = locale === 'ar';
 
     const toggleOpen = useCallback(() => {
         setIsOpen((prev) => !prev);
@@ -46,16 +51,16 @@ export const CommandPalette = () => {
         const q = query.toLowerCase();
 
         const results = [
-            ...systems.map(s => ({ title: s.title, description: s.description, type: 'system', icon: Zap, url: `/systems/${s.slug}` })),
-            ...tools.map(t => ({ title: t.name, description: t.description, type: 'tool', icon: Settings, url: `/tools/${t.id}` })),
-            ...posts.map(p => ({ title: p.title, description: p.excerpt, type: 'post', icon: FileText, url: `/blog/${p.slug}` }))
+            ...systems.map(s => ({ title: getLocalizedContent(s.title, locale), description: getLocalizedContent(s.description, locale), type: 'system', icon: Zap, url: `/${locale}/systems/${s.slug}` })),
+            ...tools.map(t => ({ title: getLocalizedContent(t.name, locale), description: getLocalizedContent(t.description, locale), type: 'tool', icon: Settings, url: `/${locale}/tools/${t.id}` })),
+            ...posts.map(p => ({ title: getLocalizedContent(p.title, locale), description: getLocalizedContent(p.excerpt, locale), type: 'post', icon: FileText, url: `/${locale}/blog/${p.slug}` }))
         ].filter(item =>
             item.title.toLowerCase().includes(q) ||
             (item.description && item.description.toLowerCase().includes(q))
         );
 
         return results.slice(0, 8);
-    }, [query]);
+    }, [query, locale]);
 
     const handleSelect = (item: { url: string }) => {
         router.push(item.url);
@@ -93,18 +98,18 @@ export const CommandPalette = () => {
                     >
                         <div className="bg-card border border-border/50 rounded-2xl shadow-2xl overflow-hidden">
                             <div className="relative flex items-center p-4 border-b border-border/50">
-                                <Search className="absolute right-4 w-5 h-5 text-muted-foreground mr-4 ml-4" />
+                                <Search className={`absolute ${isAr ? 'right-4' : 'left-4'} w-5 h-5 text-muted-foreground ${isAr ? 'mr-4 ml-4' : 'ml-4 mr-4'}`} />
                                 <input
                                     ref={inputRef}
                                     type="text"
-                                    placeholder="ابحث عن أنظمة، أدوات، أو شروحات..."
-                                    className="w-full bg-transparent border-none outline-none text-xl pr-10 pl-10"
+                                    placeholder={isAr ? "ابحث عن أنظمة، أدوات، أو شروحات..." : "Search for systems, tools, or explanations..."}
+                                    className={`w-full bg-transparent border-none outline-none text-xl ${isAr ? 'pr-10 pl-10' : 'pl-10 pr-10'}`}
                                     value={query}
                                     onChange={(e) => setQuery(e.target.value)}
                                     onKeyDown={handleKeyDown}
-                                    dir="rtl"
+                                    dir={isAr ? "rtl" : "ltr"}
                                 />
-                                <div className="flex items-center gap-2 mr-4">
+                                <div className={`flex items-center gap-2 ${isAr ? 'mr-4' : 'ml-4'}`}>
                                     <kbd className="px-2 py-1 rounded bg-secondary/10 border border-secondary/20 text-xs text-muted-foreground">ESC</kbd>
                                 </div>
                             </div>
@@ -120,25 +125,28 @@ export const CommandPalette = () => {
                                                     onClick={() => handleSelect(item)}
                                                     onMouseEnter={() => setActiveIndex(index)}
                                                     className={cn(
-                                                        "w-full flex items-center justify-between p-3 rounded-xl transition-all duration-200 text-right group",
+                                                        "w-full flex items-center justify-between p-3 rounded-xl transition-all duration-200 group",
+                                                        isAr ? "text-right" : "text-left",
                                                         index === activeIndex ? "bg-primary/10 text-primary border-primary/20" : "hover:bg-secondary/5"
                                                     )}
                                                 >
-                                                    <div className="flex items-center gap-3">
+                                                    <div className={`flex items-center gap-3 ${isAr ? '' : 'flex-row-reverse'}`}>
                                                         <div className={cn(
                                                             "p-2 rounded-lg",
                                                             index === activeIndex ? "bg-primary/20" : "bg-secondary/10"
                                                         )}>
                                                             <Icon className="w-5 h-5" />
                                                         </div>
-                                                        <div className="flex flex-col items-start pr-0 pl-0">
+                                                        <div className={`flex flex-col ${isAr ? 'items-start pr-0 pl-0' : 'items-end pr-0 pl-0'}`}>
                                                             <span className="font-bold text-lg">{item.title}</span>
                                                             <span className="text-sm opacity-60 line-clamp-1">{item.description}</span>
                                                         </div>
                                                     </div>
                                                     <ArrowRight className={cn(
                                                         "w-5 h-5 transition-transform",
-                                                        index === activeIndex ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
+                                                        isAr
+                                                            ? (index === activeIndex ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4")
+                                                            : (index === activeIndex ? "opacity-100 translate-x-0 rotate-180" : "opacity-0 translate-x-4 rotate-180")
                                                     )} />
                                                 </button>
                                             );
@@ -146,22 +154,24 @@ export const CommandPalette = () => {
                                     </div>
                                 ) : query ? (
                                     <div className="p-8 text-center text-muted-foreground">
-                                        لم يتم العثور على نتائج لـ &quot;{query}&quot;
+                                        {isAr ? `لم يتم العثور على نتائج لـ "${query}"` : `No results found for "${query}"`}
                                     </div>
                                 ) : (
                                     <div className="p-4 space-y-4">
-                                        <p className="text-xs font-bold text-muted-foreground uppercase mr-2 tracking-wider">اقتراحات سريعة</p>
+                                        <p className={`text-xs font-bold text-muted-foreground uppercase tracking-wider ${isAr ? 'mr-2' : 'ml-2'}`}>
+                                            {isAr ? 'اقتراحات سريعة' : 'Quick Suggestions'}
+                                        </p>
                                         <div className="grid grid-cols-2 gap-2">
                                             {[
-                                                { label: "دليل الـ 10 ساعات", url: "/resources/10-hour-guide" },
-                                                { label: "الأنظمة الجاهزة", url: "/systems" },
-                                                { label: "كل الأدوات", url: "/tools" },
-                                                { label: "استشارات مجانية", url: "/consultancy" }
+                                                { label: isAr ? "دليل الـ 10 ساعات" : "10-Hour Guide", url: `/${locale}/resources/10-hour-guide` },
+                                                { label: isAr ? "الأنظمة الجاهزة" : "Ready Systems", url: `/${locale}/systems` },
+                                                { label: isAr ? "كل الأدوات" : "All Tools", url: `/${locale}/tools` },
+                                                { label: isAr ? "استشارات مجانية" : "Free Consultancy", url: `/${locale}/consultancy` }
                                             ].map((link, i) => (
                                                 <button
                                                     key={i}
                                                     onClick={() => { router.push(link.url); setIsOpen(false); }}
-                                                    className="p-3 text-right rounded-xl border border-border/50 hover:border-primary/50 hover:bg-primary/5 transition-all"
+                                                    className={`${isAr ? 'text-right' : 'text-left'} p-3 rounded-xl border border-border/50 hover:border-primary/50 hover:bg-primary/5 transition-all`}
                                                 >
                                                     <span className="font-medium">{link.label}</span>
                                                 </button>
@@ -171,13 +181,20 @@ export const CommandPalette = () => {
                                 )}
                             </div>
 
-                            <div className="p-3 border-t border-border/50 bg-secondary/5 flex items-center justify-between text-xs text-muted-foreground">
-                                <div className="flex gap-4">
-                                    <span className="flex items-center gap-1"><Command className="w-3 h-3" /> + K للاختصار</span>
-                                    <span className="flex items-center gap-1">↑↓ للتنقل</span>
-                                    <span className="flex items-center gap-1">Enter للاختيار</span>
+                            <div className={`p-3 border-t border-border/50 bg-secondary/5 flex items-center justify-between text-xs text-muted-foreground ${isAr ? '' : 'flex-row-reverse'}`}>
+                                <div className={`flex gap-4 ${isAr ? '' : 'flex-row-reverse'}`}>
+                                    <span className="flex items-center gap-1">
+                                        <Command className="w-3 h-3" />
+                                        {isAr ? '+ K للاختصار' : '+ K Shortcut'}
+                                    </span>
+                                    <span className="flex items-center gap-1">
+                                        {isAr ? '↑↓ للتنقل' : '↑↓ Navigate'}
+                                    </span>
+                                    <span className="flex items-center gap-1">
+                                        {isAr ? 'Enter للاختيار' : 'Enter Select'}
+                                    </span>
                                 </div>
-                                <span>ذكاء عملي v1.0</span>
+                                <span>{isAr ? 'ذكاء عملي' : 'Zakaa Amaly'} v1.0</span>
                             </div>
                         </div>
                     </motion.div>

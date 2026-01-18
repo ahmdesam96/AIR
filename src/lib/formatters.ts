@@ -1,7 +1,6 @@
 // Format date in Arabic format
 export function formatDateArabic(date: string | Date): string {
   const d = new Date(date);
-  const arabicNums = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
 
   const year = d.getFullYear();
   const month = String(d.getMonth() + 1).padStart(2, '0');

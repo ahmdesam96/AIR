@@ -1,12 +1,10 @@
 'use client';
 
-import { ReactNode } from 'react';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { CopySystemButton } from '@/components/systems/CopySystemButton';
-import { PlayCircle, Download, ArrowRight } from 'lucide-react';
+import { Download, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import clsx from 'clsx';
 
 interface DemoPageTemplateProps {
   systemTitle: string;
@@ -22,7 +20,7 @@ interface DemoPageTemplateProps {
   downloadFile?: {
     name: string;
     url: string;
-    format: 'PDF' | 'DOC' | 'CSV';
+    format: 'PDF' | 'DOC' | 'CSV' | 'JSON';
   };
   steps?: {
     title: string;
