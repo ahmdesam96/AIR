@@ -17,8 +17,8 @@ export async function generateStaticParams() {
     );
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string; locale: string }> }) {
-    const { slug, locale } = await params;
+export async function generateMetadata({ params }: { params: { slug: string; locale: string } }) {
+    const { slug, locale } = params;
     const decodedSlug = decodeURIComponent(slug);
     const tool = tools.find((t) => t.slug === decodedSlug);
     if (!tool) return { title: 'أداة غير موجودة' };
@@ -38,8 +38,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
 }
 
-export default async function ToolDetailPage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
-    const { slug, locale } = await params;
+export default async function ToolDetailPage({ params }: { params: { slug: string; locale: string } }) {
+    const { slug, locale } = params;
     const decodedSlug = decodeURIComponent(slug);
     const tool = tools.find((t) => t.slug === decodedSlug);
 

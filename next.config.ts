@@ -6,6 +6,7 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig: NextConfig = {
   output: 'export',
   basePath: '/AIR',
+  trailingSlash: true,
   images: {
     unoptimized: true,
     formats: ['image/avif', 'image/webp'],
