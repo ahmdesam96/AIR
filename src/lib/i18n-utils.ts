@@ -4,5 +4,5 @@ export function getLocalizedContent(content: LocalizableString, locale: string):
     if (typeof content === 'string') {
         return content;
     }
-    return content[locale as 'ar' | 'en'] || content.ar;
+    return content[locale as 'ar' | 'en'] || "";
 }

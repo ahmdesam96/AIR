@@ -1,4 +1,4 @@
-export type LocalizableString = string | { ar: string; en: string };
+export type LocalizableString = string | { ar?: string; en?: string };
 
 export function getLocalizedContent(content: LocalizableString | undefined | null, locale: string): string {
     if (!content) return '';
@@ -93,7 +93,7 @@ export interface Tool {
 
 export interface Template {
     name: string;
-    platform: 'Notion' | 'Trello' | 'Sheets' | 'Other';
+    platform: 'Notion' | 'Trello' | 'Sheets' | 'Miro' | 'Other';
     url: string;
     language: 'ar' | 'en' | 'both';
 }
@@ -189,8 +189,8 @@ export const paymentDetails: PaymentDetails = {
 export const authors: Record<string, Author> = {
     ahmed: {
         name: { ar: "أحمد عصام", en: "Ahmed Esam" },
-        avatar: "/AIR/images/ahmed-esam.png",
-        role: { ar: "مؤسس ذكاء.", en: "Founder of Zakaa." },
+        avatar: "/images/ahmed-esam.png",
+        role: { ar: "مؤسس AIR.", en: "Founder of AIR." },
         bio: {
             ar: "رائد أعمال تقني مهتم بتبسيط الذكاء الاصطناعي للشركات الناشئة.",
             en: "Tech entrepreneur interested in simplifying AI for startups."
@@ -693,7 +693,7 @@ export const posts: BlogPost[] = [
         date: "2025-05-15",
         category: { ar: "ذكاء اصطناعي", en: "AI" },
         readingTime: { ar: "5 دقائق", en: "5 min" },
-        image: "/AIR/images/blog/marketing.png",
+        image: "/images/blog/marketing.png",
         author: authors.ahmed,
         tags: ["ChatGPT", "تسويق", "استراتيجية"],
         seo: {
@@ -712,10 +712,11 @@ export const posts: BlogPost[] = [
     },
     {
         slug: "ادوات-الإنتاجية-2025",
-        title: "أفضل 5 أدوات لتنظيم الوقت لرواد الأعمال في 2025",
-        excerpt: "مقارنة شاملة بين Notion و Trello و ClickUp مع نصائح لاختيار الأداة المناسبة لفريق عملك.",
-        content: `
-    <img src = "/AIR/images/blog/productivity.png" alt = "Productivity Tools Cover" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
+        title: { ar: "أفضل 5 أدوات لتنظيم الوقت لرواد الأعمال في 2025" },
+        excerpt: { ar: "مقارنة شاملة بين Notion و Trello و ClickUp مع نصائح لاختيار الأداة المناسبة لفريق عملك." },
+        content: {
+            ar: `
+    <img src = "/images/blog/productivity.png" alt = "Productivity Tools Cover" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
 
     <h2>لماذا أدوات الإنتاجية ليست رفاهية؟</h2>
     <p> في عام 2025، المنافسة لم تعد من يعمل بجد أكثر، بل من يعمل بذكاء أكثر...</p>
@@ -773,10 +774,11 @@ export const posts: BlogPost[] = [
 
     <h2> الخلاصة </h2>
     <p> الأداة الأفضل هي الأداة التي تستخدمها بالفعل. ابدأ بأداة واحدة، التزم بها لمدة شهر، ثم قيم فعاليتها.</p>
-        `,
+        `
+        },
         date: "2025-05-12",
-        category: "إنتاجية",
-        readingTime: "7 دقائق",
+        category: { ar: "إنتاجية" },
+        readingTime: { ar: "7 دقائق" },
         image: "https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=800&auto=format&fit=crop",
         author: authors.ahmed,
         tags: ["أدوات", "إنتاجية", "خطط 2025"],
@@ -784,18 +786,19 @@ export const posts: BlogPost[] = [
         isSponsored: true,
         sponsorName: "Notion",
         seo: {
-            metaTitle: "أفضل أدوات الإنتاجية 2025 | ذكاء.",
-            metaDescription: "مقارنة بين أفضل أدوات تنظيم الوقت لرواد الأعمال: Notion vs ClickUp.",
+            metaTitle: { ar: "أفضل أدوات الإنتاجية 2025 | ذكاء." },
+            metaDescription: { ar: "مقارنة بين أفضل أدوات تنظيم الوقت لرواد الأعمال: Notion vs ClickUp." },
             keywords: ["إنتاجية", "Notion", "ClickUp", "تنظيم الوقت"]
         },
         relatedSystem: "نظام-توفير-10-ساعات"
     },
     {
         slug: "تحديثات-gemini-ديسمبر-2024",
-        title: "تحديثات Google Gemini الجديدة: ما الذي تغير؟",
-        excerpt: "نظرة سريعة على المميزات الجديدة في نموذج Gemini 1.5 Pro وكيف يمكنك الاستفادة منها في تحليل البيانات.",
-        content: `
-    <img src = "/AIR/images/blog/gemini.png" alt = "Gemini Updates Cover" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
+        title: { ar: "تحديثات Google Gemini الجديدة: ما الذي تغير؟" },
+        excerpt: { ar: "نظرة سريعة على المميزات الجديدة في نموذج Gemini 1.5 Pro وكيف يمكنك الاستفادة منها في تحليل البيانات." },
+        content: {
+            ar: `
+    <img src = "/images/blog/gemini.png" alt = "Gemini Updates Cover" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
 
     <h2>عصر جديد من نماذج جوجل </h2>
     <p> أعلنت Google مؤخراً عن تحديثات ضخمة لنموذجها الرائد Gemini...</p>
@@ -835,25 +838,27 @@ export const posts: BlogPost[] = [
 
     <h2> الخلاصة </h2>
     <p> جوجل عادت للمنافسة بقوة. حرب الذكاء الاصطناعي تشتعل، والمستفيد الأكبر هو نحن المستخدمين. جرب Gemini Advanced اليوم واستكشف قوة المليون توكن.</p>
-        `,
+        `
+        },
         date: "2025-05-10",
-        category: "أخبار",
-        readingTime: "4 دقائق",
-        image: "/AIR/images/blog/gemini.png",
+        category: { ar: "أخبار" },
+        readingTime: { ar: "4 دقائق" },
+        image: "/images/blog/gemini.png",
         author: authors.ahmed,
         tags: ["Google Gemini", "أخبار", "تحليل بيانات", "Google"],
         seo: {
-            metaTitle: "تحديثات Google Gemini | ذكاء.",
-            metaDescription: "كل ما تريد معرفته عن تحديثات Google Gemini 1.5 Pro الجديدة.",
+            metaTitle: { ar: "تحديثات Google Gemini | ذكاء." },
+            metaDescription: { ar: "كل ما تريد معرفته عن تحديثات Google Gemini 1.5 Pro الجديدة." },
             keywords: ["Google Gemini", "AI", "Google"]
         }
     },
     {
         slug: "افضل-5-ادوات-ذكاء-اصطناعي-2025",
-        title: "5 أدوات ذكاء اصطناعي ستغير قواعد اللعبة في 2025",
-        excerpt: "قائمة شاملة بأقوى أدوات الذكاء الاصطناعي التي يجب على كل رائد أعمال معرفتها، من البحث الذكي إلى صناعة المحتوى.",
-        content: `
-    <img src = "/AIR/images/blog/blog_top_tools.png" alt = "Top AI Tools Cover" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
+        title: { ar: "5 أدوات ذكاء اصطناعي ستغير قواعد اللعبة في 2025" },
+        excerpt: { ar: "قائمة شاملة بأقوى أدوات الذكاء الاصطناعي التي يجب على كل رائد أعمال معرفتها، من البحث الذكي إلى صناعة المحتوى." },
+        content: {
+            ar: `
+    <img src = "/images/blog/blog_top_tools.png" alt = "Top AI Tools Cover" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
 
     
     <p> في عالم يتطور بسرعة الضوء، لم يعد استخدام الذكاء الاصطناعي رفاهية، بل ضرورة للبقاء في المنافسة...</p>
@@ -897,25 +902,27 @@ export const posts: BlogPost[] = [
 
     <h2>الخلاصة </h2>
     <p> هذه الأدوات ليست مجرد برمجيات، بل هي موظفون رقميون يعملون لخدمتك 24 / 7. ابدأ بتجربة واحدة منها اليوم.</p>
-        `,
+        `
+        },
         date: "2025-06-01",
-        category: "أدوات",
+        category: { ar: "أدوات" },
         readingTime: "6 دقائق",
-        image: "/AIR/images/blog/blog_top_tools.png",
+        image: "/images/blog/blog_top_tools.png",
         author: authors.ahmed,
         tags: ["Perplexity", "Claude", "AI Tools", "Suno", "Gamma"],
         seo: {
-            metaTitle: "أقوى أدوات الذكاء الاصطناعي 2025 | ذكاء.",
-            metaDescription: "أفضل 5 أدوات ذكاء اصطناعي يجب عليك استخدامها في 2025.",
+            metaTitle: { ar: "أقوى أدوات الذكاء الاصطناعي 2025 | ذكاء." },
+            metaDescription: { ar: "أفضل 5 أدوات ذكاء اصطناعي يجب عليك استخدامها في 2025." },
             keywords: ["AI Tools", "Perplexity", "Claude", "أدوات"]
         }
     },
     {
         slug: "دليل-الذكاء-الاصطناعي-للمبتدئين",
-        title: "دليل المبتدئين الشامل للذكاء الاصطناعي في 2025",
-        excerpt: "كل ما تحتاج معرفته عن الذكاء الاصطناعي من الصفر: المفاهيم الأساسية، الأدوات، وكيف تبدأ رحلتك.",
-        content: `
-    <img src = "/AIR/images/blog/ai-beginners.png" alt = "AI Beginners Guide" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
+        title: { ar: "دليل المبتدئين الشامل للذكاء الاصطناعي في 2025" },
+        excerpt: { ar: "كل ما تحتاج معرفته عن الذكاء الاصطناعي من الصفر: المفاهيم الأساسية، الأدوات، وكيف تبدأ رحلتك." },
+        content: {
+            ar: `
+    <img src = "/images/blog/ai-beginners.png" alt = "AI Beginners Guide" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
 
     <h2>مقدمة: لماذا يجب أن تهتم بالذكاء الاصطناعي؟</h2>
     <p> الذكاء الاصطناعي لم يعد خيالاً علمياً أو حكراً على المتخصصين. في 2025، أصبح أداة يومية يستخدمها الملايين لكتابة الإيميلات، تصميم الصور، البرمجة، وحتى التعلم. إذا كنت لا تستخدمه، فأنت تتخلف عن الركب.</p>
@@ -993,25 +1000,27 @@ export const posts: BlogPost[] = [
 
     <h2>الخلاصة: ابدأ اليوم، لا غداً </h2>
     <p> الذكاء الاصطناعي ليس موضة عابرة. إنه تحول جذري في كيفية عملنا. كل يوم تتأخر فيه عن التعلم، يتقدم فيه منافسوك. ابدأ بخطوة صغيرة اليوم: افتح ChatGPT واطلب منه أن يساعدك في مهمة كنت تؤجلها.</p>
-        `,
+        `
+        },
         date: "2025-05-20",
-        category: "شروحات",
-        readingTime: "8 دقائق",
-        image: "/AIR/images/blog/ai-beginners.png",
+        category: { ar: "شروحات" },
+        readingTime: { ar: "8 دقائق" },
+        image: "/images/blog/ai-beginners.png",
         author: authors.ahmed,
         tags: ["مبتدئين", "تعلم", "ChatGPT", "دليل"],
         seo: {
-            metaTitle: "دليل المبتدئين للذكاء الاصطناعي 2025 | ذكاء.",
-            metaDescription: "تعلم أساسيات الذكاء الاصطناعي من الصفر مع هذا الدليل الشامل للمبتدئين.",
+            metaTitle: { ar: "دليل المبتدئين للذكاء الاصطناعي 2025 | ذكاء." },
+            metaDescription: { ar: "تعلم أساسيات الذكاء الاصطناعي من الصفر مع هذا الدليل الشامل للمبتدئين." },
             keywords: ["AI للمبتدئين", "تعلم الذكاء الاصطناعي", "ChatGPT", "دليل"]
         }
     },
     {
         slug: "صناعة-المحتوى-بالذكاء-الاصطناعي",
-        title: "كيف تصنع محتوى احترافي باستخدام الذكاء الاصطناعي",
-        excerpt: "دليل عملي لصناع المحتوى: من الفكرة للنشر باستخدام أدوات AI المختلفة.",
-        content: `
-    <img src = "/AIR/images/blog/ai-content.png" alt = "AI Content Creation" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
+        title: { ar: "كيف تصنع محتوى احترافي باستخدام الذكاء الاصطناعي" },
+        excerpt: { ar: "دليل عملي لصناع المحتوى: من الفكرة للنشر باستخدام أدوات AI المختلفة." },
+        content: {
+            ar: `
+    <img src = "/images/blog/ai-content.png" alt = "AI Content Creation" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
 
     <h2>ثورة صناعة المحتوى </h2>
     <p> ما كان يحتاج فريقاً من الكتّاب والمصممين والمحررين، أصبح اليوم ممكناً لشخص واحد بمساعدة الذكاء الاصطناعي. هذا ليس بديلاً عن الإبداع البشري، بل هو تضخيم له.</p>
@@ -1106,26 +1115,28 @@ export const posts: BlogPost[] = [
 
     <h2>الخلاصة </h2>
     <p> الذكاء الاصطناعي هو أقوى مساعد يمكن لصانع المحتوى الحصول عليه. لكنه يبقى مساعداً. القرار الإبداعي، الرؤية، والصوت الفريد - هذه تبقى مسؤوليتك. استخدم AI لتوفير الوقت والجهد، واستثمر هذا الوفر في تطوير إبداعك.</p>
-        `,
+        `
+        },
         date: "2025-05-25",
-        category: "إنتاجية",
-        readingTime: "7 دقائق",
-        image: "/AIR/images/blog/ai-content.png",
+        category: { ar: "إنتاجية" },
+        readingTime: { ar: "7 دقائق" },
+        image: "/images/blog/ai-content.png",
         author: authors.ahmed,
         tags: ["صناعة المحتوى", "إنتاجية", "تسويق", "Canva"],
         seo: {
-            metaTitle: "صناعة المحتوى بالذكاء الاصطناعي | ذكاء.",
-            metaDescription: "دليل عملي لصناع المحتوى لاستخدام AI في كل مرحلة من مراحل الإنتاج.",
+            metaTitle: { ar: "صناعة المحتوى بالذكاء الاصطناعي | ذكاء." },
+            metaDescription: { ar: "دليل عملي لصناع المحتوى لاستخدام AI في كل مرحلة من مراحل الإنتاج." },
             keywords: ["صناعة المحتوى", "AI", "تسويق", "إنتاجية"]
         },
         relatedSystem: "نظام-إعادة-استغلال-المحتوى"
     },
     {
         slug: "مستقبل-الذكاء-الاصطناعي-في-العالم-العربي",
-        title: "مستقبل الذكاء الاصطناعي في العالم العربي: الفرص والتحديات",
-        excerpt: "تحليل شامل لوضع الذكاء الاصطناعي في المنطقة العربية والفرص الهائلة التي تنتظر الجيل الجديد.",
-        content: `
-    <img src = "/AIR/images/blog/ai-arab.png" alt = "AI in Arab World" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
+        title: { ar: "مستقبل الذكاء الاصطناعي في العالم العربي: الفرص والتحديات" },
+        excerpt: { ar: "تحليل شامل لوضع الذكاء الاصطناعي في المنطقة العربية والفرص الهائلة التي تنتظر الجيل الجديد." },
+        content: {
+            ar: `
+    <img src = "/images/blog/ai-arab.png" alt = "AI in Arab World" style="width: 100%; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" >
 
     <h2>لحظة تاريخية </h2>
     <p> نحن نعيش ما يمكن تسميته "لحظة الإنترنت الثانية". كما غيّر الإنترنت كل شيء في التسعينات، يعيد الذكاء الاصطناعي تشكيل العالم الآن. والسؤال: أين العالم العربي من هذا كله؟</p>
@@ -1200,17 +1211,108 @@ export const posts: BlogPost[] = [
 
     <h2>الخلاصة </h2>
     <p> الذكاء الاصطناعي ليس تهديداً للعالم العربي، بل هو فرصة تاريخية للقفز عدة مراحل للأمام. لكن هذه الفرصة لن تنتظر. كل يوم يمر، ينضم المزيد من الناس لهذه الثورة. السؤال: هل ستكون منهم؟</p>
-        `,
+        `
+        },
         date: "2025-05-28",
-        category: "مستقبل",
-        readingTime: "6 دقائق",
-        image: "/AIR/images/blog/ai-arab.png",
+        category: { ar: "مستقبل" },
+        readingTime: { ar: "6 دقائق" },
+        image: "/images/blog/ai-arab.png",
         author: authors.ahmed,
         tags: ["مستقبل", "العالم العربي", "ريادة الأعمال", "تعليم"],
         seo: {
-            metaTitle: "مستقبل الذكاء الاصطناعي في العالم العربي | ذكاء.",
-            metaDescription: "تحليل شامل للفرص والتحديات التي يواجهها العالم العربي في عصر الذكاء الاصطناعي.",
+            metaTitle: { ar: "مستقبل الذكاء الاصطناعي في العالم العربي | ذكاء." },
+            metaDescription: { ar: "تحليل شامل للفرص والتحديات التي يواجهها العالم العربي في عصر الذكاء الاصطناعي." },
             keywords: ["AI", "العالم العربي", "مستقبل", "فرص"]
+        }
+    },
+    {
+        slug: "agentic-ai-revolution",
+        title: {
+            ar: "ثورة الوكلاء الأذكياء (Agentic AI): زملاؤك الجدد في العمل",
+            en: "The Agentic AI Revolution: Your New Virtual Coworkers"
+        },
+        excerpt: {
+            ar: "كيف تنتقل تقنيات الذكاء الاصطناعي من مجرد مساعدين إلى وكلاء مستقلين ينفذون مهام معقدة.",
+            en: "How AI is moving from assistants to autonomous agents executing complex tasks."
+        },
+        content: {
+            ar: `
+                <img src="/images/blog/agentic-ai.png" alt="Agentic AI" style="width: 100%; border-radius: 12px; margin-bottom: 2rem;"/>
+                <h2>عصر الوكلاء الأذكياء</h2>
+                <p>نحن نشهد نقلة نوعية من الـ Chatbots إلى الـ Agents. لم يعد الذكاء الاصطناعي مجرد مجيب على الأسئلة، بل أصبح منقذاً للمهام.</p>
+                <h3>ما الفرق؟</h3>
+                <ul>
+                <li><strong>Chatbot:</strong> تسأله "كيف أحجز تذكرة؟" فيجيبك بالخطوات.</li>
+                <li><strong>Agent:</strong> تقول له "احجز تذكرة للقاهرة غداً" فيقوم هو بالبحث والحجز والدفع وإرسال التذكرة لك.</li>
+                </ul>
+            `,
+            en: `
+                <img src="/images/blog/agentic-ai.png" alt="Agentic AI" style="width: 100%; border-radius: 12px; margin-bottom: 2rem;"/>
+                <h2>The Era of Intelligent Agents</h2>
+                <p>We are witnessing a paradigm shift from Chatbots to Agents. AI is no longer just an answer engine; it's a task executor.</p>
+                <h3>What's the difference?</h3>
+                <ul>
+                <li><strong>Chatbot:</strong> You ask "How do I book a ticket?" and it tells you the steps.</li>
+                <li><strong>Agent:</strong> You say "Book a ticket to Cairo tomorrow" and it searches, books, pays, and sends you the ticket.</li>
+                </ul>
+            `
+        },
+        date: "2026-01-14",
+        category: { ar: "مستقبل", en: "Future" },
+        readingTime: { ar: "5 دقائق", en: "5 min" },
+        image: "/images/blog/agentic-ai.png",
+        author: authors.ahmed,
+        tags: ["Agentic AI", "Automation", "Future Work"],
+        seo: {
+            metaTitle: { ar: "ثورة الوكلاء الأذكياء | ذكاء", en: "Agentic AI Revolution | AIR" },
+            metaDescription: { ar: "تعرف على مستقبل العمل مع الوكلاء الأذكياء.", en: "Learn about the future of work with Agentic AI." },
+            keywords: ["Agentic AI", "Agents", "Automation"]
+        }
+    },
+    {
+        slug: "physical-ai",
+        title: {
+            ar: "الذكاء الاصطناعي الفيزيائي: عندما يقابل الكود العالم الحقيقي",
+            en: "Physical AI: When Code Meets the Real World"
+        },
+        excerpt: {
+            ar: "دمج الذكاء الاصطناعي مع الروبوتات وأجهزة الاستشعار لخلق تفاعل حقيقي مع البيئة.",
+            en: "Merging AI with robotics and sensors for real-world interaction."
+        },
+        content: {
+            ar: `
+                <img src="/images/blog/physical-ai.png" alt="Physical AI" style="width: 100%; border-radius: 12px; margin-bottom: 2rem;"/>
+                <h2>الذكاء الاصطناعي يخرج من الشاشة</h2>
+                <p>لم يعد الذكاء الاصطناعي حبيس الخوادم والشاشات. إنه الآن يقود السيارات، يحرك الروبوتات في المصانع، ويتحكم في شبكات الطاقة.</p>
+                <h3>أهم التطبيقات:</h3>
+                <ul>
+                <li>الروبوتات البشرية (Humanoids).</li>
+                <li>المركبات ذاتية القيادة.</li>
+                <li>إنترنت الأشياء الذكي (AIoT).</li>
+                </ul>
+            `,
+            en: `
+                <img src="/images/blog/physical-ai.png" alt="Physical AI" style="width: 100%; border-radius: 12px; margin-bottom: 2rem;"/>
+                <h2>AI Steps Out of the Screen</h2>
+                <p>AI is no longer confined to servers and screens. It's now driving cars, operating factory robots, and controlling power grids.</p>
+                <h3>Key Applications:</h3>
+                <ul>
+                <li>Humanoid Robots.</li>
+                <li>Autonomous Vehicles.</li>
+                <li>Intelligent IoT (AIoT).</li>
+                </ul>
+            `
+        },
+        date: "2026-01-18",
+        category: { ar: "تكنولوجيا", en: "Technology" },
+        readingTime: { ar: "6 دقائق", en: "6 min" },
+        image: "/images/blog/physical-ai.png",
+        author: authors.ahmed,
+        tags: ["Physical AI", "Robotics", "IoT"],
+        seo: {
+            metaTitle: { ar: "الذكاء الاصطناعي الفيزيائي | ذكاء", en: "Physical AI | AIR" },
+            metaDescription: { ar: "كيف يغير الذكاء الاصطناعي العالم المادي.", en: "How AI is transforming the physical world." },
+            keywords: ["Physical AI", "Robotics", "Future"]
         }
     }
 ];
@@ -1271,7 +1373,7 @@ export const systems: System[] = [
             { label: { ar: "المنصات", en: "Platforms" }, value: { ar: "3 منصات", en: "3 platforms" } }
         ],
         toolsUsed: ["chatgpt", "claude", "canva"],
-        image: "/AIR/images/systems/content-repurposing.png",
+        image: "/images/systems/content-repurposing.png",
         valueIdentity: {
             promise7Days: {
                 ar: "ستمتلك مكتبة محتوى متجددة تكفيك لشهر كامل خلال 7 أيام فقط.",
@@ -1364,7 +1466,7 @@ export const systems: System[] = [
             { label: { ar: "الضغط الذهني", en: "Mental Stress" }, value: { ar: "-80%", en: "-80%" } }
         ],
         toolsUsed: ["perplexity", "notion"],
-        image: "/AIR/images/systems/10-hour.png",
+        image: "/images/systems/10-hour.png",
         valueIdentity: {
             promise7Days: {
                 ar: "ستستعيد أول 10 ساعات من وقتك الضائع قبل نهاية الأسبوع الأول.",
@@ -1401,6 +1503,99 @@ export const systems: System[] = [
             level: "intermediate",
             expectedTime: { ar: "24 ساعة", en: "24 hours" }
         }
+    },
+    {
+        id: "3",
+        slug: "agentic-automation-system",
+        title: {
+            ar: "نظام الأتمتة الوكيلية (Agentic Automation)",
+            en: "Agentic Automation System"
+        },
+        subtitle: {
+            ar: "ابنِ فريقاً من الموظفين الرقميين يعملون وأنت نائم",
+            en: "Build a team of digital employees working while you sleep"
+        },
+        description: {
+            ar: "هذا ليس مجرد أتمتة عادية. هذا النظام يعلمك كيف تبني 'وكلاء' (Agents) مستقلين يمكنهم البحث، وتنفيذ المهام، واتخاذ القرارات البسيطة نيابة عنك.",
+            en: "This is not just normal automation. This system teaches you how to build autonomous Agents that can search, execute tasks, and make simple decisions for you."
+        },
+        problem: {
+            ar: "الأتمتة التقليدية (مثل Zapier) غبية؛ إذا واجهت خطأ تتوقف. أنت بحاجة لنظام يفهم ويصحح نفسه.",
+            en: "Traditional automation (like Zapier) is dumb; if it hits an error, it stops. You need a system that understands and self-corrects."
+        },
+        result: {
+            ar: "فريق كامل من الوكلاء يديرون عملياتك اليومية (بحث، كتابة، ردود عملاء) بتكلفة 0$.",
+            en: "A full team of agents managing your daily operations (research, writing, support) for $0."
+        },
+        steps: [
+            {
+                title: { ar: "الخطوة 1: وكيل البحث (The Researcher)", en: "Step 1: The Researcher" },
+                description: {
+                    ar: "استخدم LiveDocs أو Perplexity للبحث العميق وجمع البيانات حول أي موضوع، ثم تلخيصه في تقرير منظم.",
+                    en: "Use LiveDocs or Perplexity for deep research and data gathering, then summarize into a structured report."
+                },
+                tool: "livedocs"
+            },
+            {
+                title: { ar: "الخطوة 2: وكيل التنفيذ (The Executor)", en: "Step 2: The Executor" },
+                description: {
+                    ar: "حول ملاحظاتك الصوتية من الاجتماعات باستخدام AudioScribe إلى مهام واضحة، ثم دع PostSyncer يحولها لمحتوى.",
+                    en: "Turn voice notes using AudioScribe into clear tasks, then let PostSyncer turn them into content."
+                },
+                tool: "audioscribe"
+            },
+            {
+                title: { ar: "الخطوة 3: وكيل المراجعة (The Reviewer)", en: "Step 3: The Reviewer" },
+                description: {
+                    ar: "لا تنشر شيئاً دون مراجعة. استخدم Claude كـ 'مدير جودة' لمراجعة المخرجات قبل اعتمادها.",
+                    en: "Never publish without review. Use Claude as a 'Quality Manager' to review outputs before approval."
+                },
+                tool: "claude"
+            }
+        ],
+        stats: [
+            { label: { ar: "التكلفة", en: "Cost" }, value: { ar: "0$ / شهر", en: "$0 / mo" } },
+            { label: { ar: "التوفر", en: "Availability" }, value: { ar: "24/7", en: "24/7" } },
+            { label: { ar: "السرعة", en: "Speed" }, value: { ar: "10x", en: "10x" } }
+        ],
+        toolsUsed: ["livedocs", "audioscribe", "claude", "postsyncer"],
+        image: "/images/systems/agentic-system.png",
+        valueIdentity: {
+            promise7Days: {
+                ar: "ستطلق أول وكيل ذكي لك (AI Agent) يقوم بمهمة كاملة من البداية للنهاية.",
+                en: "You will launch your first AI Agent performing a complete end-to-end task."
+            },
+            roiIndicators: [
+                { ar: "استبدال موظف مبتدئ", en: "Replace junior hire" },
+                { ar: "عمل متواصل 24 ساعة", en: "24h continuous work" },
+                { ar: "دقة 99% في المهام الروتينية", en: "99% accuracy in routine tasks" }
+            ],
+            beforeAfter: {
+                before: {
+                    title: { ar: "أنت تقوم بكل شيء", en: "You do everything" },
+                    description: { ar: "تقضي يومك في التنقل بين التطبيقات والنسخ واللصق.", en: "Spending your day switching apps and copy-pasting." },
+                    stats: [{ label: { ar: "وقت ضائع", en: "Wasted Time" }, value: { ar: "40%", en: "40%" } }]
+                },
+                after: {
+                    title: { ar: "الوكلاء يعملون", en: "Agents at work" },
+                    description: { ar: "أنت المدير، والوكلاء ينفذون العمل. تراجع النتائج فقط.", en: "You are the manager, agents execute. You only review results." },
+                    stats: [{ label: { ar: "وقت ضائع", en: "Wasted Time" }, value: { ar: "0%", en: "0%" } }]
+                }
+            }
+        },
+        templates: [
+            { name: "خارطة طريق الوكلاء", platform: "Miro", url: "https://miro.com/templates", language: "en" },
+            { name: "أوامر الوكلاء (Prompts)", platform: "Notion", url: "https://notion.so/prompts", language: "both" }
+        ],
+        lessons: [
+            { title: "مقدمة في الـ Agentic Workflow", duration: "8:00" },
+            { title: "بناء وكيلك الأول مع LiveDocs", duration: "12:30" }
+        ],
+        filterMetadata: {
+            goal: "automation",
+            level: "advanced",
+            expectedTime: { ar: "3 ساعات (إعداد)", en: "3 hours (setup)" }
+        }
     }
 ];
 
@@ -1419,7 +1614,7 @@ export const tools: Tool[] = [
         content: {
             ar: `
     <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-    <img src="/AIR/images/tools/chatgpt.png" alt = "ChatGPT Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+    <img src="/images/tools/chatgpt.png" alt = "ChatGPT Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
     </div>
     <h2> 1) مقدمة عن الأداة </h2>
     <p> ChatGPT هو روبوت محادثة(Chatbot) طورته شركة OpenAI، يعتمد على الذكاء الاصطناعي التوليدي...</p>
@@ -1505,7 +1700,7 @@ export const tools: Tool[] = [
         `,
             en: `
     <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-    <img src="/AIR/images/tools/chatgpt.png" alt = "ChatGPT Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+    <img src="/images/tools/chatgpt.png" alt = "ChatGPT Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
     </div>
     <h2> 1) Introduction </h2>
     <p> ChatGPT is a Chatbot developed by OpenAI, based on generative AI...</p>
@@ -1588,7 +1783,7 @@ export const tools: Tool[] = [
         category: "Chatbots",
         link: "https://chat.openai.com",
         featured: true,
-        image: "/AIR/images/tools/chatgpt.png",
+        image: "/images/tools/chatgpt.png",
         bestFor: [
             { ar: "العصف الذهني وتوليد الأفكار", en: "Brainstorming and ideation" },
             { ar: "التلخيص والكتابة السريعة", en: "Summarization and fast writing" },
@@ -1613,7 +1808,7 @@ export const tools: Tool[] = [
         content: {
             ar: `
     <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-    <img src="/AIR/images/tools/notion.png" alt = "Notion Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+    <img src="/images/tools/notion.png" alt = "Notion Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
     </div>
     <h2> 1) مقدمة عن الأداة </h2>
     <p> Notion هو التطبيق "الكل في واحد" الذي يجمع بين تدوين الملاحظات، وإدارة المهام، وقواعد البيانات...</p>
@@ -1698,7 +1893,7 @@ export const tools: Tool[] = [
         `,
             en: `
     <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-    <img src="/AIR/images/tools/notion.png" alt = "Notion Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+    <img src="/images/tools/notion.png" alt = "Notion Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
     </div>
     <h2> 1) Introduction </h2>
     <p> Notion is the "all-in-one" app that combines note-taking, task management, and databases...</p>
@@ -1781,7 +1976,7 @@ export const tools: Tool[] = [
         category: "Productivity",
         link: "https://notion.so",
         featured: true,
-        image: "/AIR/images/tools/notion.png",
+        image: "/images/tools/notion.png",
         bestFor: [
             { ar: "بناء الأنظمة وتوثيق العمليات", en: "Building systems and documenting processes" },
             { ar: "إدارة المشاريع وقواعد البيانات", en: "Project management and databases" },
@@ -1806,7 +2001,7 @@ export const tools: Tool[] = [
         content: {
             ar: `
     <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-    <img src="/AIR/images/tools/midjourney.png" alt = "Midjourney Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+    <img src="/images/tools/midjourney.png" alt = "Midjourney Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
     </div>
     <h2> 1) مقدمة عن الأداة </h2>
     <p> Midjourney هو مختبر أبحاث مستقل ينتج برنامج ذكاء اصطناعي خاصاً يحمل نفس الاسم...</p>
@@ -1889,7 +2084,7 @@ export const tools: Tool[] = [
         `,
             en: `
     <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-    <img src="/AIR/images/tools/midjourney.png" alt = "Midjourney Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+    <img src="/images/tools/midjourney.png" alt = "Midjourney Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
     </div>
     <h2> 1) Introduction </h2>
     <p> Midjourney is an independent research lab producing a proprietary AI program...</p>
@@ -1966,7 +2161,7 @@ export const tools: Tool[] = [
         category: "Design",
         link: "https://midjourney.com",
         featured: false,
-        image: "/AIR/images/tools/midjourney.png",
+        image: "/images/tools/midjourney.png",
         bestFor: [
             { ar: "صور فنية عالية الجودة", en: "High-quality artistic images" },
             { ar: "الإلهام البصري (Moodboards)", en: "Visual inspiration (Moodboards)" },
@@ -1991,7 +2186,7 @@ export const tools: Tool[] = [
         content: {
             ar: `
                                                             <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                <img src="/AIR/images/tools/canva.png" alt = "Canva Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                <img src="/images/tools/canva.png" alt = "Canva Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                     </div>
                                                                     <h2> 1) مقدمة عن الأداة </h2>
                                                                         <p> Canva هي منصة تصميم جرافيك عالمية تهدف إلى "تمكين العالم من التصميم"...</p>
@@ -2076,7 +2271,7 @@ export const tools: Tool[] = [
         `,
             en: `
                                                             <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                <img src="/AIR/images/tools/canva.png" alt = "Canva Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                <img src="/images/tools/canva.png" alt = "Canva Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                     </div>
                                                                     <h2> 1) Introduction </h2>
     <p> Canva is a global graphic design platform aimed at "empowering the world to design"...</p>
@@ -2155,7 +2350,7 @@ export const tools: Tool[] = [
         category: "Design",
         link: "https://canva.com",
         featured: true,
-        image: "/AIR/images/tools/canva.png",
+        image: "/images/tools/canva.png",
         bestFor: [
             { ar: "تصميمات السوشيال ميديا السريعة", en: "Fast social media designs" },
             { ar: "العروض التقديمية", en: "Presentations" },
@@ -2180,7 +2375,7 @@ export const tools: Tool[] = [
         content: {
             ar: `
                                                                                                                                             <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                                <img src="/AIR/images/tools/perplexity.png" alt = "Perplexity Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                                <img src="/images/tools/perplexity.png" alt = "Perplexity Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                                     </div>
                                                                                                                                                     <h2> 1) مقدمة عن الأداة </h2>
                                                                                                                                                         <p> Perplexity AI هو محرك "إجابات" يطمح ليكون بديلاً لجوغل...</p>
@@ -2264,7 +2459,7 @@ export const tools: Tool[] = [
         `,
             en: `
                                                                                                                                             <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                                <img src="/AIR/images/tools/perplexity.png" alt = "Perplexity Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                                <img src="/images/tools/perplexity.png" alt = "Perplexity Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                                     </div>
                                                                                                                                                     <h2> 1) Introduction </h2>
     <p> Perplexity AI is an "answer" engine aiming to be an alternative to Google...</p>
@@ -2342,7 +2537,7 @@ export const tools: Tool[] = [
         category: "Productivity",
         link: "https://perplexity.ai",
         featured: true,
-        image: "/AIR/images/tools/perplexity.png",
+        image: "/images/tools/perplexity.png",
         bestFor: [
             { ar: "البحث الأكاديمي والتحقق من الحقائق", en: "Academic research and fact-checking" },
             { ar: "الحصول على إجابات مع مصادر", en: "Getting answers with sources" },
@@ -2367,7 +2562,7 @@ export const tools: Tool[] = [
         content: {
             ar: `
                                                                                                                                         <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                            <img src="/AIR/images/tools/claude.png" alt = "Claude Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                            <img src="/images/tools/claude.png" alt = "Claude Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                                 </div>
                                                                                                                                                 <h2> 1) مقدمة عن الأداة </h2>
                                                                                                                                                     <p> Claude هي عائلة نماذج ذكاء اصطناعي من شركة Anthropic...</p>
@@ -2449,7 +2644,7 @@ export const tools: Tool[] = [
         `,
             en: `
                                                                                                                                         <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                            <img src="/AIR/images/tools/claude.png" alt = "Claude Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                            <img src="/images/tools/claude.png" alt = "Claude Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                                 </div>
                                                                                                                                                 <h2> 1) Introduction </h2>
     <p> Claude is a family of AI models from Anthropic...</p>
@@ -2527,7 +2722,7 @@ export const tools: Tool[] = [
         category: "Chatbots",
         link: "https://anthropic.com",
         featured: true,
-        image: "/AIR/images/tools/claude.png",
+        image: "/images/tools/claude.png",
         bestFor: [
             { ar: "البرمجة (Coding) وتحليل الكود", en: "Coding and code analysis" },
             { ar: "الكتابة الطبيعية الشبيهة بالبشر", en: "Natural, human-like writing" },
@@ -2552,7 +2747,7 @@ export const tools: Tool[] = [
         content: {
             ar: `
                                                                                                                              <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                 <img src="/AIR/images/tools/gamma.png" alt = "Gamma Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                 <img src="/images/tools/gamma.png" alt = "Gamma Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                      </div>
                                                                                                                                      <h2> 1) مقدمة عن الأداة </h2>
                                                                                                                                          <p> Gamma هو بديل حديث لـ PowerPoint و Google Slides...</p>
@@ -2634,7 +2829,7 @@ export const tools: Tool[] = [
         `,
             en: `
                                                                                                                              <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                 <img src="/AIR/images/tools/gamma.png" alt = "Gamma Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                 <img src="/images/tools/gamma.png" alt = "Gamma Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                      </div>
                                                                                                                                      <h2> 1) Introduction </h2>
     <p> Gamma is a modern alternative to PowerPoint and Google Slides...</p>
@@ -2707,7 +2902,7 @@ export const tools: Tool[] = [
         category: "Design",
         link: "https://gamma.app",
         featured: true,
-        image: "/AIR/images/tools/gamma.png",
+        image: "/images/tools/gamma.png",
         bestFor: [
             { ar: "إنشاء عرض تقديمي كامل في ثوانٍ", en: "Creating complete presentations in seconds" },
             { ar: "تحويل مستند نصي إلى عرض", en: "Converting text documents to presentations" }
@@ -2731,7 +2926,7 @@ export const tools: Tool[] = [
         content: {
             ar: `
                                                                                                                              <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                 <img src="/AIR/images/tools/suno.png" alt = "Suno Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                 <img src="/images/tools/suno.png" alt = "Suno Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                      </div>
                                                                                                                                      <h2> 1) مقدمة عن الأداة </h2>
                                                                                                                                          <p> Suno v3 هو برنامج ذكاء اصطناعي متخصص في توليد الصوتيات...</p>
@@ -2813,7 +3008,7 @@ export const tools: Tool[] = [
         `,
             en: `
                                                                                                                              <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                 <img src="/AIR/images/tools/suno.png" alt = "Suno Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                 <img src="/images/tools/suno.png" alt = "Suno Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                      </div>
                                                                                                                                      <h2> 1) Introduction </h2>
     <p> Suno v3 is an AI program specializing in audio generation...</p>
@@ -2886,7 +3081,7 @@ export const tools: Tool[] = [
         category: "Design",
         link: "https://suno.com",
         featured: true,
-        image: "/AIR/images/tools/suno.png",
+        image: "/images/tools/suno.png",
         bestFor: [
             { ar: "توليد أغاني كاملة من الكلمات", en: "Generating full songs from lyrics" },
             { ar: "إنشاء موسيقى خلفية للفيديوهات", en: "Creating background music for videos" }
@@ -2910,7 +3105,7 @@ export const tools: Tool[] = [
         content: {
             ar: `
                                                                                                                             <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                <img src="/AIR/images/tools/heygen.png" alt = "HeyGen Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                <img src="/images/tools/heygen.png" alt = "HeyGen Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                     </div>
                                                                                                                                     <h2> 1) مقدمة عن الأداة </h2>
                                                                                                                                         <p> HeyGen منصة رائدة في توليد الفيديو بالذكاء الاصطناعي...</p>
@@ -2993,7 +3188,7 @@ export const tools: Tool[] = [
                                                                                                                                     `,
             en: `
                                                                                                                              <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                 <img src="/AIR/images/tools/heygen.png" alt = "HeyGen Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                 <img src="/images/tools/heygen.png" alt = "HeyGen Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                      </div>
                                                                                                                                      <h2> 1) Introduction </h2>
     <p> HeyGen is a leading AI platform for video generation...</p>
@@ -3066,7 +3261,7 @@ export const tools: Tool[] = [
         category: "Video",
         link: "https://heygen.com",
         featured: false,
-        image: "/AIR/images/tools/heygen.png",
+        image: "/images/tools/heygen.png",
         bestFor: [
             { ar: "إنشاء فيديوهات تدريبية وشرح دون تصوير", en: "Creating training videos without filming" },
             { ar: "ترجمة فيديوهاتك للغات أخرى مع تعديل حركة الشفاه", en: "Translating videos with lip-syncing" }
@@ -3091,7 +3286,7 @@ export const tools: Tool[] = [
         content: {
             ar: `
                                                                                                                                     <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                        <img src="/AIR/images/tools/lovable.png" alt = "Lovable Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                        <img src="/images/tools/lovable.png" alt = "Lovable Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                             </div>
                                                                                                                                             <h2> 1) مقدمة عن الأداة </h2>
                                                                                                                                                 <p> Lovable(المعروفة سابقاً بـ GPT Engineer) هي منصة رائدة في عالم "Vibe Coding" - أسلوب برمجة جديد تصف فيه ما تريده بالكلام وتترك الذكاء الاصطناعي يكتب الكود. تدعي المنصة أنها أسرع 20 مرة من البرمجة التقليدية.</p>
@@ -3181,7 +3376,7 @@ export const tools: Tool[] = [
                                                                                                                                                                 `,
             en: `
                                                                                                                              <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                 <img src="/AIR/images/tools/lovable.png" alt = "Lovable Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                 <img src="/images/tools/lovable.png" alt = "Lovable Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                      </div>
                                                                                                                                      <h2> 1) Introduction </h2>
     <p> Lovable (formerly GPT Engineer) is a pioneer in "Vibe Coding" - a new programming style where you describe what you want and AI writes the code.</p>
@@ -3216,7 +3411,7 @@ export const tools: Tool[] = [
         category: "Coding",
         link: "https://lovable.dev",
         featured: true,
-        image: "/AIR/images/tools/lovable.png",
+        image: "/images/tools/lovable.png",
         bestFor: [
             { ar: "بناء تطبيقات ويب كاملة (MVP) بسرعة", en: "Building full web apps (MVPs) quickly" },
             { ar: "الأشخاص الذين ليس لديهم خبرة في البرمجة", en: "People without coding experience" }
@@ -3240,7 +3435,7 @@ export const tools: Tool[] = [
         content: {
             ar: `
                                                                                                                                                                 <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                                                    <img src="/AIR/images/tools/bolt.png" alt = "Bolt. new Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                                                    <img src="/images/tools/bolt.png" alt = "Bolt. new Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                                                         </div>
                                                                                                                                                                         <h2> 1) مقدمة عن الأداة </h2>
                                                                                                                                                                             <p> Bolt. new من StackBlitz هو ثورة في عالم البرمجة السريعة. يجمع بين قوة Claude 3.5 Sonnet وتقنية WebContainers الفريدة لتشغيل Node. js مباشرة في المتصفح، مما يجعل البناء والتشغيل والنشر يحدث في ثوانٍ.</p>
@@ -3331,7 +3526,7 @@ export const tools: Tool[] = [
                                                                                                                                                                     `,
             en: `
                                                                                                                              <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                 <img src="/AIR/images/tools/bolt.png" alt = "Bolt. new Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                 <img src="/images/tools/bolt.png" alt = "Bolt. new Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                      </div>
                                                                                                                                      <h2> 1) Introduction </h2>
     <p> Bolt.new by StackBlitz is a revolution in rapid prototyping. It combines Claude 3.5 Sonnet with WebContainers to run Node.js in your browser.</p>
@@ -3358,7 +3553,7 @@ export const tools: Tool[] = [
         category: "Coding",
         link: "https://bolt.new",
         featured: true,
-        image: "/AIR/images/tools/bolt.png",
+        image: "/images/tools/bolt.png",
         bestFor: [
             { ar: "النماذج الأولية السريعة جداً", en: "Very rapid prototyping" },
             { ar: "إصلاح الأخطاء البرمجية تلقائياً", en: "Automatic bug fixing" }
@@ -3382,7 +3577,7 @@ export const tools: Tool[] = [
         content: {
             ar: `
                                                                                                                                                                     <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                                                        <img src="/AIR/images/tools/replit.png" alt = "Replit Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                                                        <img src="/images/tools/replit.png" alt = "Replit Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                                                             </div>
                                                                                                                                                                             <h2> 1) مقدمة عن الأداة </h2>
                                                                                                                                                                                 <p> Replit Agent هو "مساعد برمجة" متكامل يتجاوز مجرد كتابة الكود. يمكنه إدارة المشروع بالكامل: من تحليل الفكرة، لكتابة الكود، لإصلاح الأخطاء، للنشر على الإنترنت.</p>
@@ -3473,7 +3668,7 @@ export const tools: Tool[] = [
                                                                                                                                                                     `,
             en: `
                                                                                                                              <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                 <img src="/AIR/images/tools/replit.png" alt = "Replit Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                 <img src="/images/tools/replit.png" alt = "Replit Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                      </div>
                                                                                                                                      <h2> 1) Introduction </h2>
     <p> Replit Agent is a comprehensive "coding assistant" that manages the entire project lifecycle, from idea analysis to deployment.</p>
@@ -3500,7 +3695,7 @@ export const tools: Tool[] = [
         category: "Coding",
         link: "https://replit.com",
         featured: true,
-        image: "/AIR/images/tools/replit.png",
+        image: "/images/tools/replit.png",
         bestFor: [
             { ar: "بناء تطبيقات كاملة مع قواعد بيانات", en: "Building full apps with databases" },
             { ar: "المبتدئين في البرمجة", en: "Beginners in programming" }
@@ -3524,7 +3719,7 @@ export const tools: Tool[] = [
         content: {
             ar: `
                                                                                                                                                                     <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                                                        <img src="/AIR/images/tools/cursor.png" alt = "Cursor Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                                                        <img src="/images/tools/cursor.png" alt = "Cursor Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                                                             </div>
                                                                                                                                                                             <h2> 1) مقدمة عن الأداة </h2>
                                                                                                                                                                                 <p> Cursor هو "VS Code on Steroids" - محرر أكواد احترافي يدمج أقوى نماذج الذكاء الاصطناعي(GPT‑4, Claude) مباشرة في تجربة البرمجة. إنه الخيار المفضل للمطورين المحترفين الذين يريدون تسريع عملهم بشكل كبير.</p>
@@ -3615,7 +3810,7 @@ export const tools: Tool[] = [
                                                                                                                                                                     `,
             en: `
                                                                                                                              <div style="width: 100%; text-align: center; margin-bottom: 2rem;" >
-                                                                                                                                 <img src="/AIR/images/tools/cursor.png" alt = "Cursor Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
+                                                                                                                                 <img src="/images/tools/cursor.png" alt = "Cursor Logo" style="width: 120px; height: 120px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);" >
                                                                                                                                      </div>
                                                                                                                                      <h2> 1) Introduction </h2>
     <p> Cursor is "VS Code on Steroids" - a professional code editor that integrates powerful AI models (GPT-4, Claude) directly into the coding experience.</p>
@@ -3642,7 +3837,7 @@ export const tools: Tool[] = [
         category: "Coding",
         link: "https://cursor.com",
         featured: true,
-        image: "/AIR/images/tools/cursor.png",
+        image: "/images/tools/cursor.png",
         bestFor: [
             { ar: "المطورين المحترفين لإسراع الإنتاجية", en: "Professional developers to speed up productivity" },
             { ar: "إعادة هيكلة الكود (Refactoring) وتغييرات الملفات المتعددة", en: "Code refactoring and multi-file changes" }
@@ -5493,6 +5688,66 @@ export const tools: Tool[] = [
         link: "https://kapwing.com",
         featured: false,
         image: "https://logo.clearbit.com/kapwing.com"
+    },
+    {
+        id: "postsyncer",
+        name: { ar: "PostSyncer", en: "PostSyncer" },
+        slug: "postsyncer",
+        description: { ar: "أداة أتمتة نشر المحتوى على منصات التواصل الاجتماعي.", en: "AI Content Maker for social media publishing automation." },
+        content: {
+            ar: `<p>أداة قوية لأتمتة وجدولة المحتوى على مختلف المنصات.</p>`,
+            en: `<p>A powerful tool for automating and scheduling content across platforms.</p>`
+        },
+        category: "Social Media",
+        link: "https://postsyncer.com",
+        featured: true,
+        image: "https://logo.clearbit.com/postsyncer.com",
+        bestFor: [{ ar: "أتمتة النشر", en: "Automating posts" }, { ar: "جدولة المحتوى", en: "Content scheduling" }]
+    },
+    {
+        id: "anima-vibe",
+        name: { ar: "Anima", en: "Anima" },
+        slug: "anima",
+        description: { ar: "تحويل التصميم إلى كود برمجي نظيف باستخدام الذكاء الاصطناعي (Vibe Coding).", en: "Turn design into clean code using AI (Vibe Coding)." },
+        content: {
+            ar: `<p>حول تصميمات Figma إلى كود React/Vue نظيف جاهز للنشر.</p>`,
+            en: `<p>Turn Figma designs into clean production-ready React/Vue code.</p>`
+        },
+        category: "Design",
+        link: "https://animaapp.com",
+        featured: true,
+        image: "https://logo.clearbit.com/animaapp.com",
+        bestFor: [{ ar: "تحويل التصميم لكود", en: "Design to code" }, { ar: "تطوير الواجهات", en: "Frontend development" }]
+    },
+    {
+        id: "audioscribe",
+        name: { ar: "AudioScribe", en: "AudioScribe" },
+        slug: "audioscribe",
+        description: { ar: "حول أفكارك الصوتية وملاحظاتك إلى نصوص منظمة ومشاريع.", en: "Turn voice thoughts and notes into structured text and projects." },
+        content: {
+            ar: `<p>سجل صوتك ودع الذكاء الاصطناعي يحوله لكتابة احترافية، رسائل إيميل، أو خطط مشاريع.</p>`,
+            en: `<p>Record your voice and let AI turn it into professional writing, emails, or project plans.</p>`
+        },
+        category: "Productivity",
+        link: "https://audioscribe.io", // Placeholder URL based on search
+        featured: true,
+        image: "https://logo.clearbit.com/audioscribe.io",
+        bestFor: [{ ar: "اجتماعات", en: "Meeting notes" }, { ar: "ترتيب الأفكار", en: "Thought structuring" }]
+    },
+    {
+        id: "livedocs",
+        name: { ar: "LiveDocs", en: "LiveDocs" },
+        slug: "livedocs",
+        description: { ar: "مساحة عمل ذكية للبيانات تجمع بين المستندات، الكود، والذكاء الاصطناعي.", en: "Intelligent data workspace combining docs, code, and AI." },
+        content: {
+            ar: `<p>حلل بياناتك، اكتب SQL، وانشئ تقارير تفاعلية بمساعدة وكيل بيانات ذكي.</p>`,
+            en: `<p>Analyze data, write SQL, and build interactive reports with a smart data agent.</p>`
+        },
+        category: "Productivity", // Or 'Data' if available, but staying safe with Productivity/Coding
+        link: "https://livedocs.com",
+        featured: true,
+        image: "https://logo.clearbit.com/livedocs.com",
+        bestFor: [{ ar: "تحليل البيانات", en: "Data analysis" }, { ar: "SQL توليد", en: "SQL generation" }]
     }
 ];
 

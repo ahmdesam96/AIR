@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import "../globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
@@ -9,6 +8,8 @@ import { ImageDeduplicationProvider } from "@/components/providers/ImageDeduplic
 import { CommandPalette } from "@/components/ui/CommandPalette";
 import { AuthProvider } from "@/components/auth/AuthProvider";
 import { SITE_CONFIG } from "@/lib/constants";
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 
 interface PageProps {
   children: React.ReactNode;
@@ -72,69 +73,34 @@ export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'ar' }];
 }
 
-export default async function RootLayout({
+export default async function LocaleLayout({
   children,
   params,
 }: PageProps) {
   const { locale } = await params;
-  const isAr = locale === 'ar';
+  const messages = await getMessages();
 
   return (
-    <html lang={locale} dir={isAr ? "rtl" : "ltr"} suppressHydrationWarning>
-      <head>
-        <link
-          rel="preload"
-          href="/AIR/fonts/Inter-VariableFont_slnt,wght.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": isAr ? "أثير | AIR" : "AIR | Arab Intelligence Repository",
-              "alternateName": isAr ? "مستودع الذكاء العربي" : "Arab Intelligence Repository",
-              "url": `${SITE_CONFIG.url}/${locale}`,
-              "description": isAr
-                ? "مستودع الذكاء العربي - منصة شاملة للأنظمة والأدوات والمعرفة في مجال الذكاء الاصطناعي"
-                : "Arab Intelligence Repository - A comprehensive platform for systems, tools, and knowledge in the field of AI",
-              "inLanguage": locale,
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": `https://arabic-ai-blog.vercel.app/${locale}/blog?search={search_term_string}`,
-                "query-input": "required name=search_term_string"
-              }
-            })
-          }}
-        />
-      </head>
-      <body
-        className={`antialiased font-['IBM_Plex_Sans_Arabic'] font-medium bg-background text-foreground min-h-screen flex flex-col`}
-        suppressHydrationWarning
+    <NextIntlClientProvider messages={messages} locale={locale}>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <AuthProvider>
-            <GoogleAnalytics />
-            <ImageDeduplicationProvider>
-              <Header locale={locale} />
-              <main className="flex-1">
-                {children}
-              </main>
-              <Footer locale={locale} />
-              <CommandPalette locale={locale} />
-            </ImageDeduplicationProvider>
-            <Toaster />
-          </AuthProvider>
-        </ThemeProvider>
-      </body>
-    </html>
+        <AuthProvider>
+          <GoogleAnalytics />
+          <ImageDeduplicationProvider>
+            <Header locale={locale} />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer locale={locale} />
+            <CommandPalette locale={locale} />
+          </ImageDeduplicationProvider>
+          <Toaster />
+        </AuthProvider>
+      </ThemeProvider>
+    </NextIntlClientProvider>
   );
 }

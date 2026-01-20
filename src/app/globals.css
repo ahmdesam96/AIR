@@ -260,4 +260,70 @@
       grid-row: span 1;
     }
   }
+
+  /* === Code Snippet Styles === */
+  pre {
+    @apply font-mono text-xs leading-relaxed;
+  }
+
+  code {
+    @apply font-mono;
+  }
+
+  /* Syntax highlighting for JSON */
+  .syntax-json {
+    color: var(--foreground);
+  }
+
+  .syntax-json .syntax-key {
+    color: #2B6CF0;
+  }
+
+  .syntax-json .syntax-string {
+    color: #16A34A;
+  }
+
+  .syntax-json .syntax-number {
+    color: #F59E0B;
+  }
+
+  /* Smooth animations */
+  @keyframes slide-in-from-top {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-in {
+    animation: slide-in-from-top 0.3s ease-out;
+  }
+
+  /* Scrollbar styling for code blocks */
+  .overflow-y-auto::-webkit-scrollbar,
+  .overflow-x-auto::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-track,
+  .overflow-x-auto::-webkit-scrollbar-track {
+    background: var(--muted);
+    border-radius: 4px;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-thumb,
+  .overflow-x-auto::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-thumb:hover,
+  .overflow-x-auto::-webkit-scrollbar-thumb:hover {
+    background: var(--neutral-400);
+  }
 }

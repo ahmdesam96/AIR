@@ -46,6 +46,7 @@ export default function BlogList({ limit, locale: propLocale }: { limit?: number
     const filteredPosts = useMemo(() => {
         const _filtered = posts.filter((post) => {
             const title = getLocalizedContent(post.title, locale);
+            if (!title) return false;
             const excerpt = getLocalizedContent(post.excerpt, locale);
             const category = getLocalizedContent(post.category, locale);
 

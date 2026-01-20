@@ -20,7 +20,7 @@ export const Header = ({ locale: propLocale }: { locale?: string }) => {
                     <div className="relative w-auto h-10 transition-transform duration-300 group-hover:scale-105">
                         {/* AIR Logo - switches based on theme */}
                         <Image
-                            src="/AIR/images/brand/air-logo-full.png"
+                            src="/images/brand/air-logo-full.png"
                             alt="AIR - Arab Intelligence Repository"
                             width={160}
                             height={40}
@@ -28,7 +28,7 @@ export const Header = ({ locale: propLocale }: { locale?: string }) => {
                             priority
                         />
                         <Image
-                            src="/AIR/images/brand/air-logo-dark.png"
+                            src="/images/brand/air-logo-dark.png"
                             alt="AIR - Arab Intelligence Repository"
                             width={160}
                             height={40}

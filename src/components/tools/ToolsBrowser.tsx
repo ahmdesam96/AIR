@@ -43,6 +43,7 @@ export default function ToolsBrowser({ initialTools }: ToolsBrowserProps) {
     const filteredTools = useMemo(() => {
         return initialTools.filter((tool) => {
             const name = getLocalizedContent(tool.name, locale);
+            if (!name) return false;
             const description = getLocalizedContent(tool.description, locale);
 
             const matchesSearch = name.toLowerCase().includes(searchQuery.toLowerCase()) ||

@@ -30,7 +30,7 @@ export const MidPageCTA = ({ locale = 'ar' }: MidPageCTAProps) => {
 
                 <div className="relative w-full max-w-sm mx-auto mb-8 rounded-2xl overflow-hidden shadow-2xl border border-border/50">
                     <Image
-                        src="/AIR/images/guide-promo.png"
+                        src="/images/guide-promo.png"
                         alt={isAr ? "دليل ذكاء عملي الجديد" : "New Practical AI Guide"}
                         width={400}
                         height={300}

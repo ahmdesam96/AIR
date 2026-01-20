@@ -1,15 +1,9 @@
 "use client";
 
-import { ExternalLink, Copy, FileText, Layout, Table } from "lucide-react";
+import { ExternalLink, Copy, FileText, Layout, Table, MousePointer2 } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { motion } from "framer-motion";
-
-interface Template {
-    name: string;
-    platform: 'Notion' | 'Trello' | 'Sheets' | 'Other';
-    url: string;
-    language: 'ar' | 'en' | 'both';
-}
+import { Template } from "@/lib/data";
 
 interface TemplateLibraryProps {
     templates: Template[];
@@ -20,6 +14,7 @@ const platformIcons = {
     Notion: Layout,
     Trello: FileText,
     Sheets: Table,
+    Miro: MousePointer2,
     Other: ExternalLink,
 };
 

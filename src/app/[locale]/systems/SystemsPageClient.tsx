@@ -54,6 +54,7 @@ export default function SystemsPageClient({ locale, systems }: SystemsPageClient
             const levelMatch = selectedLevel === "all" || system.filterMetadata?.level === selectedLevel;
 
             const title = getLocalizedContent(system.title, locale);
+            if (!title) return false;
             const description = getLocalizedContent(system.description, locale);
             const subtitle = system.subtitle ? getLocalizedContent(system.subtitle, locale) : '';
 

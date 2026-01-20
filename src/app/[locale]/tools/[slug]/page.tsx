@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     const name = getLocalizedContent(tool.name, locale);
     const description = getLocalizedContent(tool.description, locale);
-    const toolImage = tool.image || '/AIR/images/placeholder-tool.png';
+    const toolImage = tool.image || '/images/placeholder-tool.png';
 
     return {
         title: `${name} | أفضل أدوات الذكاء الاصطناعي`,
@@ -47,7 +47,7 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ slu
         notFound();
     }
 
-    const toolImage = tool.image || '/AIR/images/placeholder-tool.png';
+    const toolImage = tool.image || '/images/placeholder-tool.png';
     const name = getLocalizedContent(tool.name, locale);
     const description = getLocalizedContent(tool.description, locale);
     const content = tool.content ? getLocalizedContent(tool.content, locale) : '';
